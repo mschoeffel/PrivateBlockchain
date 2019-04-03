@@ -8,7 +8,12 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class SHA3Helper {
+/**
+ * Helperclass to calculate the hash of objects
+ */
+public final class SHA3Util {
+
+    private SHA3Util(){}
 
     public static String digestToHex(byte[] digest){
         return Hex.toHexString(digest);
