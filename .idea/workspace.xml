@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/Block.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/models/BlockHeader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/SizeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTreeElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SHA3Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/TransactionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/models/TransactionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Transaction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/models/TransactionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/models/TransactionTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.SynologyWorkingDirectory/PUeeRH5O" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.SynologyWorkingDirectory/RDP_bl0P" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.SynologyWorkingDirectory/sthArWvo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTreeElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTreeElement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -277,6 +266,27 @@
               <item name="utils" type="462c0819:PsiDirectoryNode" />
               <item name="merkle" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -287,7 +297,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554317277015" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554318947228" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -357,7 +367,7 @@
       <workItem from="1552589420407" duration="1339000" />
       <workItem from="1552594742610" duration="674000" />
       <workItem from="1554026735580" duration="975000" />
-      <workItem from="1554315211672" duration="3327000" />
+      <workItem from="1554315211672" duration="3732000" />
     </task>
     <servers />
   </component>
@@ -370,11 +380,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6315000" />
+    <option name="totallyTimeSpent" value="6720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49817517" visible="true" weight="0.25979382" />
       <window_info id="Structure" order="1" sideWeight="0.5018248" side_tool="true" weight="0.2563574" />
