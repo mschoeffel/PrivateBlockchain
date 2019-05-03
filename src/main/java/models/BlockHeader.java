@@ -1,5 +1,7 @@
 package models;
 
+import logic.Blockchain;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  */
 public class BlockHeader implements Serializable {
 
+    private int version = Blockchain.VERSION;
     private int nonce = 0;
     private long timestamp;
     private byte[] previousHash;
@@ -17,6 +20,53 @@ public class BlockHeader implements Serializable {
     public BlockHeader(long timestamp, byte[] previousHash, byte[] transactionListHash) {
         this.timestamp = timestamp;
         this.previousHash = previousHash;
+        this.transactionListHash = transactionListHash;
+    }
+
+    public void incrementNonce()throws ArithmeticException{
+        if(this.nonce == Integer.MAX_VALUE){
+            throw new ArithmeticException("nonce too high");
+        }
+        this.nonce++;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public int getNonce() {
+        return nonce;
+    }
+
+    public void setNonce(int nonce) {
+        this.nonce = nonce;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public byte[] getPreviousHash() {
+        return previousHash;
+    }
+
+    public void setPreviousHash(byte[] previousHash) {
+        this.previousHash = previousHash;
+    }
+
+    public byte[] getTransactionListHash() {
+        return transactionListHash;
+    }
+
+    public void setTransactionListHash(byte[] transactionListHash) {
         this.transactionListHash = transactionListHash;
     }
 
