@@ -1,6 +1,7 @@
 package models;
 
 import logic.Blockchain;
+import utils.SHA3Util;
 
 import java.io.Serializable;
 
@@ -81,5 +82,9 @@ public class BlockHeader implements Serializable {
                 ", previousHash='" + previousHash + '\'' +
                 ", transactionListHash='" + transactionListHash + '\'' +
                 '}';
+    }
+
+    public byte[] asHash(){
+        return SHA3Util.hash256(this);
     }
 }

@@ -54,6 +54,10 @@ public class Block {
         this.blockSize = SizeUtil.calculateBlockSize(this);
     }
 
+    public byte[] getBlockHash() {
+        return blockHeader.asHash();
+    }
+
     //Getter and Setter
     public int getMagicNumber() {
         return magicNumber;
