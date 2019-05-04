@@ -19,6 +19,10 @@ public final class SHA3Util {
         return Hex.toHexString(digest);
     }
 
+    public static String hash256AsHex(Serializable o){
+        return Hex.toHexString(hash256(o));
+    }
+
     public static byte[] hash256(Serializable o) {
         byte[] digest = new byte[0];
 

@@ -42,6 +42,38 @@ public class Blockchain {
         this.difficulty = new BigInteger("-57896000000000000000000000000000000000000000000000000000000000000000000000000");
     }
 
+    public Blockchain (BigInteger difficulty, List<Chain> altChains){
+        this.difficulty = difficulty;
+        this.altChains = altChains;
+        this.blockCache = new ConcurrentHashMap<>();
+        this.transactionCache = new ConcurrentHashMap<>();
+
+        int max = 0;
+        Chain chain = null;
+
+        for(Chain altChain: altChains){
+            if(max < altChain.size()){
+                max = altChain.size();
+                chain = altChain;
+            }
+
+            for(Block block : altChain.getChain()){
+                this.blockCache.put(SHA3Util.digestToHex(block.getBlockHash()), block);
+
+                for(Transaction transaction : block.getTransactions()){
+                    this.transactionCache.put(transaction.getTxIdAsString(), transaction);
+                }
+            }
+        }
+
+        this.chain = chain;
+        this.bestBlock = chain.getLast();
+    }
+
+    public synchronized  void addBlock(Block block){
+        //
+    }
+
     public Block getGenesisBlock(){
         return chain.get(0);
     }

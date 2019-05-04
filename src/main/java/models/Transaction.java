@@ -72,6 +72,10 @@ public class Transaction implements Serializable {
                 '}';
     }
 
+    public String getTxIdAsString(){
+        return SHA3Util.hash256AsHex(this);
+    }
+
     //Getter and Setter
 
     public byte[] getSignature() {
