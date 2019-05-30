@@ -4,11 +4,12 @@ import models.Block;
 import models.Chain;
 import models.Transaction;
 import org.apache.log4j.Logger;
+import sun.security.provider.SHA;
 import utils.SHA3Util;
+import utils.VerificationUtil;
 
 import java.math.BigInteger;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -71,11 +72,120 @@ public class Blockchain {
     }
 
     public synchronized  void addBlock(Block block){
-        //
+        if(VerificationUtil.verifyBlock(block)){
+            byte[] previousBlockHash = block.getBlockHeader().getPreviousHash();
+
+            if(previousBlockIsBestBlock(previousBlockHash)){
+                block.setBlockNumber(chain.size());
+                chain.add(block);
+                bestBlock = block;
+                DependencyManager.getPendingTransactions().clearPendingTransactions(block);
+            } else{
+                checkAltChains(previousBlockHash, block);
+            }
+        }
+    }
+
+    private void checkAltChains(byte[] previousBlockHash, Block block){
+        boolean isNoBlockOfAltChain = true;
+        for(Chain altChain : altChains){
+            if(Arrays.equals(altChain.getLast().getBlockHash(), previousBlockHash)){
+                block.setBlockNumber(altChain.size());
+                altChain.add(block);
+                switchChainsIfNecessary(altChain);
+                isNoBlockOfAltChain = false;
+                break;
+            }
+        }
+        if(isNoBlockOfAltChain){
+            createNewAltChain(previousBlockHash, block);
+        }
+    }
+
+    private void createNewAltChain(byte[] previousBlockHash, Block block){
+        Chain chain = getChainForBlock(getBlockByHash(previousBlockHash));
+
+        for(int i = chain.getChain().size() -1; i >= 0; i--){
+            if(Arrays.equals(chain.get(i).getBlockHash(), previousBlockHash)){
+                List<Block> newChain = new CopyOnWriteArrayList<>(chain.getChain().subList(0,i+1));
+                block.setBlockNumber(newChain.size());
+                newChain.add(block);
+                Chain newChainChain = new Chain(NETWORK_ID, newChain);
+                altChains.add(newChainChain);
+                i = -1;
+
+                switchChainsIfNecessary(newChainChain);
+            }
+        }
+    }
+
+    private void switchChainsIfNecessary(Chain chain){
+        if(chain.size() > this.chain.size()){
+            correctPendingTransactions(this.chain, chain);
+            this.chain = chain;
+            this.bestBlock = chain.getLast();
+        }
+    }
+
+    private void correctPendingTransactions(Chain previousChain, Chain chain){
+        int index = getIndexOfFork(previousChain, chain);
+
+        Set<Transaction> transactionsToRemove = new HashSet<>();
+        for(int i = index; i < chain.size(); i++){
+            transactionsToRemove.addAll(chain.get(i).getTransactions());
+        }
+
+        Set<Transaction> transactionsToInsert = new HashSet<>();
+        for(int i = index; i < previousChain.size(); i++){
+            previousChain.get(i).getTransactions().forEach(item -> {
+                if(!transactionsToRemove.contains(item)){
+                    transactionsToInsert.add(item);
+                }
+            });
+        }
+
+        DependencyManager.getPendingTransactions().clearPendingTransactions(transactionsToRemove);
+        DependencyManager.getPendingTransactions().addPendingTransactions(transactionsToInsert);
+    }
+
+    private int getIndexOfFork(Chain previousChain, Chain chain){
+        int index = -1;
+        for(int i = previousChain.size()-1; i >= 0; i--){
+            index = chain.getChain().indexOf(previousChain.get(i));
+            if(index > -1){
+                break;
+            }
+        }
+        return (index > -1) ? (index + 1) : 0;
+    }
+
+    private boolean previousBlockIsBestBlock(byte[] blockHash){
+        return Arrays.equals(DependencyManager.getBlockchain().getPreviousHash(), blockHash);
+    }
+
+    private Chain getChainForBlock(Block block){
+        Chain result = null;
+
+        int index = chain.getChain().indexOf(block);
+
+        if(index == -1){
+            for (Chain altChain : altChains) {
+                if(altChain.getChain().indexOf(block) > -1){
+                    result = altChain;
+                }
+            }
+        } else{
+            result = chain;
+        }
+        return result;
     }
 
     public Block getGenesisBlock(){
         return chain.get(0);
+    }
+    public byte[] getPreviousHash(){ return bestBlock.getBlockHash();}
+    public Block getBlockByHash(byte[] hash){
+        return blockCache.get(SHA3Util.digestToHex(hash));
     }
 
 }

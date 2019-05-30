@@ -1,5 +1,6 @@
 package logic;
 
+import models.Block;
 import models.Transaction;
 import utils.SizeUtil;
 import utils.TransactionComparatorByFee;
@@ -39,6 +40,14 @@ public class PendingTransactions {
 
     public void clearPendingTransaction(Transaction transaction){
         pendingTransactions.remove(transaction);
+    }
+
+    public void clearPendingTransactions(Block block){
+        clearPendingTransactions(block.getTransactions());
+    }
+
+    public void clearPendingTransactions(Collection<Transaction> transactions){
+        transactions.forEach(item -> pendingTransactions.remove(item));
     }
 
     public boolean pendingTransactionsAvailable(){
