@@ -1,5 +1,6 @@
 package utils;
 
+import logic.Blockchain;
 import models.Block;
 import models.Transaction;
 
@@ -51,5 +52,9 @@ public final class SizeUtil {
      */
     private static int calculateTransactionSize(Transaction transaction) {
         return TRANSACTION_META_DATA_SIZE_IN_BYTES + transaction.getSignature().length;
+    }
+
+    public static int calculateTransactionCapacity(){
+        return (Blockchain.MAX_BLOCK_SIZE_BYTES - BLOCK_META_DATA_SIZE_IN_BYTES - BLOCK_HEADER_SIZE_IN_BYTES) / (TRANSACTION_META_DATA_SIZE_IN_BYTES + TRANSACTION_SIGNATURE_MAX_SIZE);
     }
 }
