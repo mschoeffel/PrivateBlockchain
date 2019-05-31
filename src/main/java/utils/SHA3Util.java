@@ -46,4 +46,8 @@ public final class SHA3Util {
 
         return digestSHA3.digest( bytes );
     }
+
+    public static byte[] hexToDigest(String hex){
+        return Hex.decode(hex);
+    }
 }

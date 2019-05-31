@@ -188,4 +188,51 @@ public class Blockchain {
         return blockCache.get(SHA3Util.digestToHex(hash));
     }
 
+    public BigInteger getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(BigInteger difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public List<Chain> getAltChains() {
+        return altChains;
+    }
+
+    public void setAltChains(List<Chain> altChains) {
+        this.altChains = altChains;
+    }
+
+    public Block getBestBlock() {
+        return bestBlock;
+    }
+
+    public void setBestBlock(Block bestBlock) {
+        this.bestBlock = bestBlock;
+    }
+
+    public Chain getChain() {
+        return chain;
+    }
+
+    public void setChain(Chain chain) {
+        this.chain = chain;
+    }
+
+    public Map<String, Block> getBlockCache() {
+        return blockCache;
+    }
+
+    public void setBlockCache(Map<String, Block> blockCache) {
+        this.blockCache = blockCache;
+    }
+
+    public Map<String, Transaction> getTransactionCache() {
+        return transactionCache;
+    }
+
+    public void setTransactionCache(Map<String, Transaction> transactionCache) {
+        this.transactionCache = transactionCache;
+    }
 }

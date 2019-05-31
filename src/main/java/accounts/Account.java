@@ -49,6 +49,10 @@ public class Account {
         this.balance += amount;
     }
 
+    public void unlockBalance(double sumToUnlock){
+        this.lockedBalance -= sumToUnlock;
+    }
+
     @Override
     public boolean equals(Object o){
         if(this == o){
