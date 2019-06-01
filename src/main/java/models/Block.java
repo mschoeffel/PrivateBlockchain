@@ -54,6 +54,10 @@ public class Block {
         this.blockSize = SizeUtil.calculateBlockSize(this);
     }
 
+    public void incrementNonce() throws ArithmeticException{
+        this.blockHeader.incrementNonce();
+    }
+
     public byte[] getBlockHash() {
         return blockHeader.asHash();
     }

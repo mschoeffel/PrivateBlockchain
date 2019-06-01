@@ -180,6 +180,11 @@ public class Blockchain {
         return result;
     }
 
+    public boolean fulfillsDifficulty(byte[] digest){
+        BigInteger temp = new BigInteger(digest);
+        return temp.compareTo(difficulty) <= 0;
+    }
+
     public Block getGenesisBlock(){
         return chain.get(0);
     }
