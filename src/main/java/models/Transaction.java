@@ -51,6 +51,10 @@ public class Transaction implements Serializable {
         createTxId();
     }
 
+    public Transaction(){
+        createTxId();
+    }
+
     /**
      * Creates the txId / Hash of the Transaction.
      */
