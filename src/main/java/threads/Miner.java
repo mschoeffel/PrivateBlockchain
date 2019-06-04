@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Miner implements Runnable{
+public class Miner implements Runnable {
 
     private List<MinerListener> listeners = new ArrayList<>();
     private boolean mining = true;
@@ -21,35 +21,35 @@ public class Miner implements Runnable{
     private UUID minerId;
     private KeyPair keyPair;
 
-    public Miner(){
+    public Miner() {
         minerId = UUID.randomUUID();
         keyPair = SignatureUtil.generateKeyPair();
         SignatureUtil.saveKeyPair(keyPair, minerId.toString());
     }
 
     @Override
-    public void run(){
-        while(isMining()){
+    public void run() {
+        while (isMining()) {
             block = getNewBlockFromMining();
 
-            while(!cancelBlock && doesNotFullfillDifficulty(block.getBlockHash())){
-                try{
+            while (!cancelBlock && doesNotFullfillDifficulty(block.getBlockHash())) {
+                try {
                     block.incrementNonce();
-                } catch(ArithmeticException e){
+                } catch (ArithmeticException e) {
                     restartMining();
                 }
             }
 
-            if(cancelBlock){
+            if (cancelBlock) {
                 block = null;
                 cancelBlock = false;
-            } else{
+            } else {
                 blockMined(block);
             }
         }
     }
 
-    private Block getNewBlockFromMining(){
+    private Block getNewBlockFromMining() {
         PendingTransactions pendingTransactions = DependencyManager.getPendingTransactions();
         Blockchain blockchain = DependencyManager.getBlockchain();
         List<Transaction> transactions = pendingTransactions.getTransactionsForNextBlock();
@@ -57,22 +57,22 @@ public class Miner implements Runnable{
         return new Block(transactions, blockchain.getPreviousHash());
     }
 
-    private boolean doesNotFullfillDifficulty(byte[] digest){
+    private boolean doesNotFullfillDifficulty(byte[] digest) {
         Blockchain blockchain = DependencyManager.getBlockchain();
         return !blockchain.fulfillsDifficulty(digest);
     }
 
-    private void restartMining(){
+    private void restartMining() {
         PendingTransactions pendingTransactions = DependencyManager.getPendingTransactions();
         List<Transaction> transactions = pendingTransactions.getTransactionsForNextBlock();
 
-        block .setTransactions(transactions);
+        block.setTransactions(transactions);
     }
 
-    private void blockMined(Block block){
+    private void blockMined(Block block) {
         block.setCoinbase(SignatureUtil.getCoinbaseFromPublicKey(keyPair));
 
-        if(block.getTransactions().size() > 0){
+        if (block.getTransactions().size() > 0) {
             block.getTransactions().forEach(transaction -> transaction.setBlockId(block.getBlockHash()));
         }
 
@@ -82,8 +82,24 @@ public class Miner implements Runnable{
         listeners.forEach(listener -> listener.notifyNewBlock(block));
     }
 
-    public boolean isMining(){
+    public boolean isMining() {
         return mining;
+    }
+
+    public void stopMining() {
+        this.mining = false;
+    }
+
+    public void setCancelBlock(boolean cancelBlock) {
+        this.cancelBlock = cancelBlock;
+    }
+
+    public void cancelBlock() {
+        this.cancelBlock = true;
+    }
+
+    public void registerListener(MinerListener listener) {
+        listeners.add(listener);
     }
 
 }
