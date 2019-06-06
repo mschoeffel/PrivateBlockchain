@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.SynologyWorkingDirectory/50suXSTi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.SynologyWorkingDirectory/V1BZyE9d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,20 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/network/adapters/TransactionAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1056">
-              <caret line="78" column="28" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1896#1897#0" expanded="true" />
-                <element signature="e#1960#1961#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -92,7 +75,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="219">
@@ -105,6 +88,18 @@
                 <element signature="e#6957#6958#0" expanded="true" />
                 <element signature="e#7026#7027#0" expanded="true" />
                 <element signature="e#7947#7948#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,6 +209,7 @@
         <option value="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" />
       </list>
     </option>
   </component>
@@ -440,7 +436,7 @@
       <workItem from="1559386822414" duration="1331000" />
       <workItem from="1559648869254" duration="3154000" />
       <workItem from="1559822523940" duration="22000" />
-      <workItem from="1559822586500" duration="1388000" />
+      <workItem from="1559822586500" duration="1705000" />
     </task>
     <servers />
   </component>
@@ -453,7 +449,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26034000" />
+    <option name="totallyTimeSpent" value="26351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="0" width="761" height="966" extended-state="0" />
@@ -892,6 +888,16 @@
             <element signature="e#6957#6958#0" expanded="true" />
             <element signature="e#7026#7027#0" expanded="true" />
             <element signature="e#7947#7948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
