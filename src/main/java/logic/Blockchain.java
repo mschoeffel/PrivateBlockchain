@@ -231,6 +231,10 @@ public class Blockchain {
         return result;
     }
 
+    public Transaction getTransactionByHash(String hash) {
+        return transactionCache.get(hash);
+    }
+
     public BigInteger getDifficulty() {
         return difficulty;
     }
