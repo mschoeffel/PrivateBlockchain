@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Blockchain" />
         <module name="myownblockchain" />
+        <module name="PrivateBlockchain" />
       </profile>
     </annotationProcessing>
   </component>

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HashListConverter implements Converter<List<byte[]>> {
-    
+
     @Override
     public void serialize(List<byte[]> bytes, ObjectWriter objectWriter, Context context) throws Exception {
         objectWriter.beginArray();
