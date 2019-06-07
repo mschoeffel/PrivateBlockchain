@@ -1,5 +1,7 @@
 package models;
 
+import api.converters.HashConverter;
+import com.owlike.genson.annotation.JsonConverter;
 import logic.Blockchain;
 import utils.SHA3Util;
 
@@ -55,18 +57,22 @@ public class BlockHeader implements Serializable {
         this.timestamp = timestamp;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getPreviousHash() {
         return previousHash;
     }
 
+    @JsonConverter(HashConverter.class)
     public void setPreviousHash(byte[] previousHash) {
         this.previousHash = previousHash;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getTransactionListHash() {
         return transactionListHash;
     }
 
+    @JsonConverter(HashConverter.class)
     public void setTransactionListHash(byte[] transactionListHash) {
         this.transactionListHash = transactionListHash;
     }
