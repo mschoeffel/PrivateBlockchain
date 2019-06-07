@@ -1,12 +1,17 @@
 package models;
 
+import api.converters.HashConverter;
+import com.owlike.genson.annotation.JsonConverter;
+import com.owlike.genson.annotation.JsonIgnore;
 import utils.SHA3Util;
 
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Class that represents a transaction of the blockchain network
@@ -51,7 +56,7 @@ public class Transaction implements Serializable {
         createTxId();
     }
 
-    public Transaction(){
+    public Transaction() {
         createTxId();
     }
 
@@ -94,20 +99,49 @@ public class Transaction implements Serializable {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Transaction that = (Transaction) o;
+        return Double.compare(that.amount, amount) == 0 &&
+                nonce == that.nonce &&
+                Double.compare(that.transactionFeeBasePrice, transactionFeeBasePrice) == 0 &&
+                Double.compare(that.transactionFeeLimit, transactionFeeLimit) == 0 &&
+                Arrays.equals(txId, that.txId) &&
+                Arrays.equals(sender, that.sender) &&
+                Arrays.equals(receiver, that.receiver);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(amount, nonce, transactionFeeBasePrice, transactionFeeLimit);
+        result = 31 * result + Arrays.hashCode(txId);
+        result = 31 * result + Arrays.hashCode(sender);
+        result = 31 * result + Arrays.hashCode(receiver);
+        return result;
+    }
+
+    @JsonIgnore
     public String getTxIdAsString() {
         return SHA3Util.hash256AsHex(this);
     }
 
     //Getter and Setter
 
+    @JsonIgnore
     public byte[] getSignature() {
         return signature;
     }
 
+    @JsonConverter(HashConverter.class)
     public void setSignature(byte[] signature) {
         this.signature = signature;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getTxId() {
         return txId;
     }
@@ -116,18 +150,22 @@ public class Transaction implements Serializable {
         this.txId = txId;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getSender() {
         return sender;
     }
 
+    @JsonConverter(HashConverter.class)
     public void setSender(byte[] sender) {
         this.sender = sender;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getReceiver() {
         return receiver;
     }
 
+    @JsonConverter(HashConverter.class)
     public void setReceiver(byte[] receiver) {
         this.receiver = receiver;
     }
@@ -180,10 +218,12 @@ public class Transaction implements Serializable {
         this.timeStamp = timeStamp;
     }
 
+    @JsonConverter(HashConverter.class)
     public byte[] getBlockId() {
         return blockId;
     }
 
+    @JsonIgnore
     public void setBlockId(byte[] blockId) {
         this.blockId = blockId;
     }
@@ -200,6 +240,7 @@ public class Transaction implements Serializable {
         return sizeInByte;
     }
 
+    @JsonIgnore
     public void setSizeInByte(int sizeInByte) {
         this.sizeInByte = sizeInByte;
     }
