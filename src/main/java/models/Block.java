@@ -1,5 +1,8 @@
 package models;
 
+import api.converters.HashConverter;
+import com.owlike.genson.annotation.JsonConverter;
+import com.owlike.genson.annotation.JsonIgnore;
 import utils.SizeUtil;
 import utils.merkle.MerkleTree;
 
@@ -58,6 +61,17 @@ public class Block {
         this.blockHeader.incrementNonce();
     }
 
+    @JsonIgnore
+    public int getNonce(){
+        return this.blockHeader.getNonce();
+    }
+
+    @JsonIgnore
+    public void setNonce(int nonce){
+        this.blockHeader.setNonce(nonce);
+    }
+
+    @JsonConverter(HashConverter.class)
     public byte[] getBlockHash() {
         return blockHeader.asHash();
     }
