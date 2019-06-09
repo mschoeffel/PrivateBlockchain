@@ -1,0 +1,157 @@
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="The explorer for your first blockchain">
+    <meta name="author" content="Tobias Fertig">
+    <meta name="keywords"
+          content="ethereum, explorer, blockchain, etherchain, cryptocurrency, cryptocurrencies, bitcoin">
+    <title>Block Explorer Light</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="/superagent/superagent.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/">Blockchain Explorer Light</a></div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wallet.html">Generate Wallet</a></li>
+                <li><a href="send.html">Send Transaction</a></li>
+                <!--<li><a href="/accounts">Accounts</a></li>-->
+                <!--<li><a href="/tx/pending">Pending Tx</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group"><input class="form-control" id="search" type="text"
+                                               placeholder="Block / Tx / Account" name="search"></div>
+                <button class="btn btn-default" type="button" onclick="triggerSearch()">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="transaction" class="container">
+    <h3>Transaktion</h3>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>ID:</td>
+            <td><a id="txId"
+                   href="/transactions.html?txid=0x43511cada8aad33a2d7735d2108eabbb2be1a0bc754d6e6aa04d7eec53fd3ef4"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Block ID:</td>
+            <td><a id="blockId"
+                   href="/blocks.html?blockid=0x0107d994eea5681e4635739197e1b3227877a19b3e7b457a811b1de1fb797edb"></a>
+            </td>
+        </tr>
+        <!--<tr>-->
+        <!--<td>Block number:</td>-->
+        <!--<td><a href="/block/4973877">4973877</a></td>-->
+        <!--</tr>-->
+        <tr>
+            <td>Sender:</td>
+            <td>
+                <a id="sender" href="/accounts.html?account=0x57e630bf2d192a515ae391113344fae17285b749"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Empf&auml;nger:</td>
+            <td>
+                <a id="receiver" href="/accounts.html?account=0x48b7f91f6763a5da119f436415d609d0fbe97062"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Menge:</td>
+            <td id="amount"></td>
+        </tr>
+        <tr>
+            <td>Nonce:</td>
+            <td id="nonce"></td>
+        </tr>
+        <tr>
+            <td>Geb&uuml;hr - Limit:</td>
+            <td id="transactionFeeLimit"></td>
+        </tr>
+        <tr>
+            <td>Geb&uuml;hr - Bezahlt:</td>
+            <td id="transactionFee"></td>
+        </tr>
+        <tr>
+            <td>Geb&uuml;hr - Basispreis:</td>
+            <td id="transactionFeeBasePrice"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function triggerSearch() {
+        var target = 'blockchain/api/' + document.getElementById('search').value;
+
+        superagent.agent().get(target)
+            .then(res => {
+                if (res.body.address) {
+                    location.href = 'accounts.html?account=' + res.body.address;
+                } else if (res.body.blockHash) {
+                    location.href = 'blocks.html?blockid=' + res.body.blockHash;
+                } else if (res.body.txId) {
+                    location.href = 'transactions.html?txid=' + res.body.txId;
+                } else {
+                    location.href = 'index.html';
+                }
+            })
+    };
+
+    var target = '/blockchain/api/transactions/' + window.location.search.substring(6);
+
+    var transactionsHref = "transactions.html?txid=";
+    var blocksHref = "blocks.html?blockid=";
+    var accountsHref = "accounts.html?account=";
+
+    var myagent = superagent.agent();
+
+    myagent.get(target)
+        .then(res => {
+            console.log(res.body);
+            document.getElementById('txId').innerHTML = res.body.txId;
+            document.getElementById('txId').href = transactionsHref + res.body.txId;
+
+            document.getElementById('blockId').innerHTML = res.body.blockId;
+            document.getElementById('blockId').href = blocksHref + res.body.blockId;
+
+            document.getElementById('sender').innerHTML = res.body.sender;
+            document.getElementById('sender').href = accountsHref + res.body.sender;
+
+            document.getElementById('receiver').innerHTML = res.body.receiver;
+            document.getElementById('receiver').href = accountsHref + res.body.receiver;
+
+            document.getElementById('amount').innerHTML = res.body.amount;
+            document.getElementById('nonce').innerHTML = res.body.nonce;
+            document.getElementById('transactionFeeLimit').innerHTML = res.body.transactionFeeLimit;
+            document.getElementById('transactionFee').innerHTML = res.body.transactionFee;
+            document.getElementById('transactionFeeBasePrice').innerHTML = res.body.transactionFeeBasePrice;
+        });
+</script>
+<style>
+    #transaction {
+        margin-top: 3cm;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    table td {
+        overflow: hidden;
+    }
+</style>
+</body>
+</html>

@@ -56,6 +56,17 @@ public class Transaction implements Serializable {
         createTxId();
     }
 
+    public Transaction(byte[] sender, byte[] receiver, double amount, int nonce, double transactionFeeBasePrice, double transactionFeeLimit) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.amount = amount;
+        this.nonce = nonce;
+        this.transactionFeeBasePrice = transactionFeeBasePrice;
+        this.transactionFeeLimit = transactionFeeLimit;
+
+        createTxId();
+    }
+
     public Transaction() {
         createTxId();
     }

@@ -4,7 +4,6 @@ import models.Block;
 import models.Chain;
 import models.Transaction;
 import org.apache.log4j.Logger;
-import sun.security.provider.SHA;
 import utils.SHA3Util;
 import utils.VerificationUtil;
 
@@ -281,5 +280,9 @@ public class Blockchain {
 
     public void setTransactionCache(Map<String, Transaction> transactionCache) {
         this.transactionCache = transactionCache;
+    }
+
+    public int size() {
+        return chain.size();
     }
 }

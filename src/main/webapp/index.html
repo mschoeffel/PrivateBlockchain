@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="The explorer for your first blockchain">
+    <meta name="author" content="Tobias Fertig">
+    <meta name="keywords"
+          content="ethereum, explorer, blockchain, etherchain, cryptocurrency, cryptocurrencies, bitcoin">
+    <title>Block Explorer Light</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="/superagent/superagent.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!--<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar"-->
+            <!--aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span-->
+            <!--class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>-->
+            <a class="navbar-brand" href="/">Blockchain Explorer Light</a></div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wallet.html">Generate Wallet</a></li>
+                <li><a href="send.html">Send Transaction</a></li>
+                <!--<li><a href="/accounts">Accounts</a></li>-->
+                <!--<li><a href="/tx/pending">Pending Tx</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group"><input class="form-control" id="search" type="text"
+                                               placeholder="Block / Tx / Account" name="search"></div>
+                <button class="btn btn-default" type="button" onclick="triggerSearch()">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="content" class="container">
+    <h3>Neuste Bl&ouml;cke</h3>
+    <table id="recent-blocks" class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <!--<th>Miner</th>-->
+            <th>Zeitstempel</th>
+            <th>Anzahl Transaktionen</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--<tr>-->
+        <!--<td><a href="/block/4973880">4973880</a></td>-->
+        <!--&lt;!&ndash;<td><a href="/account/0x0020ee4be0e2027d76603cb751ee069519ba81a1">POA-Melonport</a></td>&ndash;&gt;-->
+        <!--<td>2017-12-04T22:29:36+01:00</td>-->
+        <!--<td>0</td>-->
+        <!--</tr>-->
+        </tbody>
+    </table>
+    <h3>Neuste Transaktionen</h3>
+    <table id="recent-transactions" class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Empf&auml;nger</th>
+            <th>Menge</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script>
+    function triggerSearch() {
+        var target = 'blockchain/api/' + document.getElementById('search').value;
+
+        superagent.agent().get(target)
+            .then(res => {
+                if (res.body.address) {
+                    location.href = 'accounts.html?account=' + res.body.address;
+                } else if (res.body.blockHash) {
+                    location.href = 'blocks.html?blockid=' + res.body.blockHash;
+                } else if (res.body.txId) {
+                    location.href = 'transactions.html?txid=' + res.body.txId;
+                } else {
+                    location.href = 'index.html';
+                }
+            })
+    };
+
+    function createElementA(hrefPrefix, id) {
+        var element = document.createElement('a');
+        element.href = hrefPrefix + id;
+        element.innerHTML = id;
+        return element;
+    }
+
+    function createElementP(content) {
+        var element = document.createElement('p');
+        element.innerHTML = content;
+        return element;
+    }
+
+    var transactionTarget = '/blockchain/api/transactions/';
+    var blockTarget = '/blockchain/api/blocks/';
+
+    var transactionsHref = "transactions.html?txid=";
+    var blocksHref = "blocks.html?blockid=";
+    var accountsHref = "accounts.html?account=";
+
+    var myagent = superagent.agent();
+
+    myagent.get(blockTarget)
+        .then(res => {
+            for (block in res.body) {
+                var blk = res.body[block];
+
+                var table = document.getElementById('recent-blocks').getElementsByTagName('tbody')[0];
+                var row = table.insertRow(table.rows.length);
+
+                var cellId = row.insertCell(0);
+                cellId.appendChild(createElementA(blocksHref, blk.blockHash));
+
+                var cellTimestamp = row.insertCell(1);
+                cellTimestamp.appendChild(createElementP(new Date(blk.blockHeader.timestamp)));
+
+                var cellAmountTrx = row.insertCell(2);
+                cellAmountTrx.appendChild(createElementP(blk.transactionCount));
+            }
+        });
+
+    myagent.get(transactionTarget)
+        .then(res => {
+            for (transaction in res.body) {
+                var trx = res.body[transaction];
+
+                var table = document.getElementById('recent-transactions').getElementsByTagName('tbody')[0];
+                var row = table.insertRow(table.rows.length);
+
+                var cellId = row.insertCell(0);
+                cellId.appendChild(createElementA(transactionsHref, trx.txId));
+
+                var cellSender = row.insertCell(1);
+                cellSender.appendChild(createElementA(accountsHref, trx.sender));
+
+                var cellReceiver = row.insertCell(2);
+                cellReceiver.appendChild(createElementA(accountsHref, trx.receiver));
+
+                var cellAmount = row.insertCell(3);
+                cellAmount.appendChild(createElementP(trx.amount));
+            }
+        });
+</script>
+<style>
+    #content {
+        margin-top: 3cm;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    table td {
+        overflow: hidden;
+    }
+
+    table#recent-transactions {
+        table-layout: fixed;
+    }
+
+    table#recent-transactions td {
+        overflow: hidden;
+    }
+</style>
+</body>
+</html>

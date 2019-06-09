@@ -1,4 +1,3 @@
-import models.Transaction;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.glassfish.jersey.servlet.ServletContainer;
@@ -13,11 +12,11 @@ public class main {
 
             String webappDirectory = new File("src/main/webapp").getAbsolutePath();
 
-            tomcat.setPort(8080);
+            tomcat.setPort(8083);
             Context context = tomcat.addWebapp("", webappDirectory);
 
             Tomcat.addServlet(context, "blockchain", new ServletContainer(new Application()));
-            context.addServletMappingDecoded("/blockchain/api/*", "blcokchain");
+            context.addServletMappingDecoded("/blockchain/api/*", "blockchain");
 
             tomcat.start();
             tomcat.getServer().await();

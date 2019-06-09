@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="/superagent/superagent.min.js"></script>
+    <script src="crypto/elliptic.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/">Blockchain Explorer Light</a></div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wallet.html">Generate Wallet</a></li>
+                <li><a href="send.html">Send Transaction</a></li>
+                <!--<li><a href="/accounts">Accounts</a></li>-->
+                <!--<li><a href="/tx/pending">Pending Tx</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group"><input class="form-control" id="search" type="text"
+                                               placeholder="Block / Tx / Account" name="search"></div>
+                <button class="btn btn-default" type="button" onclick="triggerSearch()">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="content" class="container">
+    <h3>Tokens verschicken</h3>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="privateKey">Private Key</label>
+        <div class="col-md-4">
+            <input id="privateKey" name="privatekey" type="text" placeholder="Private Key" class="form-control input-md"
+                   required="">
+            <span class="help-block">Wie lautet Ihr Private Key?</span>
+        </div>
+    </div>
+    <form id="send-transaction-form" class="form-horizontal">
+        <fieldset>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="sender">Public Key</label>
+                <div class="col-md-4">
+                    <input id="sender" name="sender" type="text" placeholder="Public Key" class="form-control input-md"
+                           required="">
+                    <span class="help-block">Wie lautet Ihr Public Key?</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="receiver">Empf&auml;nger</label>
+                <div class="col-md-4">
+                    <input id="receiver" name="receiver" type="text" placeholder="Empf&auml;nger"
+                           class="form-control input-md" required="">
+                    <span class="help-block">Die Adresse, an die Sie Tokens senden m&ouml;chten.</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="amount">Menge</label>
+                <div class="col-md-4">
+                    <input id="amount" name="amount" type="number" placeholder="Menge" class="form-control input-md"
+                           required="">
+                    <span class="help-block">Wie viele Tokens m&ouml;chten Sie senden?</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="gasprice">Geb&uuml;hren: Basispreis</label>
+                <div class="col-md-4">
+                    <input id="gasprice" name="transactionFeeBasePrice" type="number"
+                           placeholder="Geb&uuml;hren: Basispreis"
+                           class="form-control input-md" required="">
+                    <span class="help-block">Wie hoch soll der Basispreis sein?</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="gaspricelimit">Geb&uuml;hren: Limit</label>
+                <div class="col-md-4">
+                    <input id="gaspricelimit" name="transactionFeeLimit" type="number"
+                           placeholder="Geb&uuml;hren: Limit"
+                           class="form-control input-md" required="">
+                    <span class="help-block">Wie hoch ist Ihr Limit f&uuml;r die Transaktionsgeb&uuml;hren?</span>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="ok"></label>
+        <div class="col-md-8">
+            <button id="ok" name="ok" class="btn btn-success" type="button" onclick="submit()">Transaktion
+                abschlie&szlig;en
+            </button>
+            <button id="cancel" name="cancel" class="btn btn-danger">Abbrechen</button>
+        </div>
+
+    </div>
+
+    <div id="verify" class="form-group">
+        <label class="col-md-4 control-label" for="verify-transaction"></label>
+        <div id="transaction-response" class="col-md-8" style="display:none">
+            <button id="verify-transaction" class="btn btn-info" type="button"
+                    onclick="location.href = 'transactions.html?txid=' + txId">Transaktion verifizieren
+            </button>
+        </div>
+    </div>
+
+</div>
+<script>
+    function triggerSearch() {
+        var target = 'blockchain/api/' + document.getElementById('search').value;
+
+        superagent.agent().get(target)
+            .then(res => {
+                if (res.body.address) {
+                    location.href = 'accounts.html?account=' + res.body.address;
+                } else if (res.body.blockHash) {
+                    location.href = 'blocks.html?blockid=' + res.body.blockHash;
+                } else if (res.body.txId) {
+                    location.href = 'transactions.html?txid=' + res.body.txId;
+                } else {
+                    location.href = 'index.html';
+                }
+            })
+    };
+
+    var txId;
+    var obj;
+
+    function toJSONString(form) {
+        var elements = form.querySelectorAll("input");
+
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var name = element.name;
+            var value = element.value;
+
+            if (name) {
+                obj[name] = value;
+            }
+        }
+
+        return JSON.stringify(obj);
+    }
+
+    function toHexString(byteArray) {
+        return Array.from(byteArray, function (byte) {
+            return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+        }).join('')
+    };
+
+    function submit() {
+        obj = {};
+        var form = document.getElementById("send-transaction-form");
+        var json = toJSONString(form);
+
+        var EC = new (elliptic.ec)('secp256k1');
+        var privString = document.getElementById('privateKey').value;
+        var pubString = document.getElementById('sender').value;
+
+        var priv = EC.keyFromPrivate(privString, 'hex');
+        console.log(priv);
+        var pub = EC.keyFromPublic(pubString, 'hex');
+        console.log(pub);
+
+        var keyPair = EC.keyPair(priv);
+        console.log(keyPair);
+        keyPair.pub = pub.pub;
+
+        var encoder = new TextEncoder();
+
+        console.log(json);
+        var signature = keyPair.sign(encoder.encode(json)).toDER();
+        console.log(toHexString(signature));
+
+        obj['signature'] = toHexString(signature);
+        console.log(JSON.stringify(obj));
+
+        var myagent = superagent.agent();
+
+        myagent.post('http://localhost:8080/blockchain/api/transactions')
+            .set('Content-Type', 'application/json')
+            .send(JSON.stringify(obj))
+            .end((err, res) => {
+                console.log(res);
+                console.log(res.header['location']);
+                txId = res.header['location'].slice(res.header['location'].lastIndexOf('/') + 1);
+                document.getElementById('transaction-response').style.display = 'block';
+            });
+    }
+</script>
+<style>
+    #verify {
+        margin-top: 1cm;
+    }
+
+    #content {
+        margin-top: 3cm;
+    }
+</style>
+</body>
+</html>

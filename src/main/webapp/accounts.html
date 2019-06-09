@@ -1,0 +1,198 @@
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <meta name="description" content="The explorer for your first blockchain">
+    <meta name="author" content="Tobias Fertig">
+    <meta name="keywords"
+          content="ethereum, explorer, blockchain, etherchain, cryptocurrency, cryptocurrencies, bitcoin">
+    <title>Block Explorer Light</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="/superagent/superagent.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span><span
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a class="navbar-brand" href="/">Blockchain Explorer Light</a></div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wallet.html">Generate Wallet</a></li>
+                <li><a href="send.html">Send Transaction</a></li>
+                <!--<li><a href="/accounts">Accounts</a></li>-->
+                <!--<li><a href="/tx/pending">Pending Tx</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group"><input class="form-control" id="search" type="text"
+                                               placeholder="Block / Tx / Account" name="search"></div>
+                <button class="btn btn-default" type="button" onclick="triggerSearch()">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="transaction" class="container">
+    <h3>Account</h3>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>Address:</td>
+            <td>
+                <a id="address" href="/accounts.html?account=0x57e630bf2d192a515ae391113344fae17285b749"></a>
+            </td>
+        </tr>
+        <tr>
+            <td>Balance:</td>
+            <td id="balance"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h4>Transaktionen</h4>
+    <table id="transactions" class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Sender</th>
+            <th>Empf&auml;nger</th>
+            <th>Menge</th>
+            <th>Typ</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <h4>Gesch&uuml;rfte Bl&ouml;cke</h4>
+    <table id="blocks" class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <!--<th>Miner</th>-->
+            <th>Zeitstempel</th>
+            <th>Anzahl Transaktionen</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script>
+    function triggerSearch() {
+        var target = 'blockchain/api/' + document.getElementById('search').value;
+
+        superagent.agent().get(target)
+            .then(res => {
+                if (res.body.address) {
+                    location.href = 'accounts.html?account=' + res.body.address;
+                } else if (res.body.blockHash) {
+                    location.href = 'blocks.html?blockid=' + res.body.blockHash;
+                } else if (res.body.txId) {
+                    location.href = 'transactions.html?txid=' + res.body.txId;
+                } else {
+                    location.href = 'index.html';
+                }
+            })
+    };
+
+    function createElementA(hrefPrefix, id) {
+        var element = document.createElement('a');
+        element.href = hrefPrefix + id;
+        element.innerHTML = id;
+        return element;
+    }
+
+    function createElementP(content) {
+        var element = document.createElement('p');
+        element.innerHTML = content;
+        return element;
+    }
+
+    var target = '/blockchain/api/accounts/' + window.location.search.substring(9);
+
+    var transactionsHref = "transactions.html?txid=";
+    var blocksHref = "blocks.html?blockid=";
+    var accountsHref = "accounts.html?account=";
+
+    var myagent = superagent.agent();
+
+    myagent.get(target)
+        .then(res => {
+            console.log(res.body);
+            document.getElementById('balance').innerHTML = res.body.balance;
+
+            document.getElementById('address').innerHTML = res.body.address;
+            document.getElementById('address').href = accountsHref + res.body.address;
+
+            var transactions = res.body.transactions;
+            for (transaction in transactions) {
+                var trx = transactions[transaction];
+
+                var table = document.getElementById('transactions').getElementsByTagName('tbody')[0];
+                var row = table.insertRow(table.rows.length);
+
+                var cellId = row.insertCell(0);
+                cellId.appendChild(createElementA(transactionsHref, trx.txId));
+
+                var cellSender = row.insertCell(1);
+                cellSender.appendChild(createElementA(accountsHref, trx.sender));
+
+                var cellReceiver = row.insertCell(2);
+                cellReceiver.appendChild(createElementA(accountsHref, trx.receiver));
+
+                var cellAmount = row.insertCell(3);
+                cellAmount.appendChild(createElementP(trx.amount));
+
+                var cellType = row.insertCell(4);
+                if (trx.sender === res.body.address) {
+                    cellType.appendChild(createElementP('OUT'));
+                } else if (trx.receiver === res.body.address) {
+                    cellType.appendChild(createElementP('IN'));
+                }
+            }
+
+            var blocks = res.body.minedBlocks;
+            for (block in blocks) {
+                var blk = blocks[block];
+
+                var table = document.getElementById('blocks').getElementsByTagName('tbody')[0];
+                var row = table.insertRow(table.rows.length);
+
+                var cellId = row.insertCell(0);
+                cellId.appendChild(createElementA(blocksHref, blk.blockHash));
+
+                var cellTimestamp = row.insertCell(1);
+                cellTimestamp.appendChild(createElementP(new Date(blk.blockHeader.timestamp)));
+
+                var cellAmountTrx = row.insertCell(2);
+                cellAmountTrx.appendChild(createElementP(blk.transactionCount));
+            }
+        });
+</script>
+<style>
+    #transaction {
+        margin-top: 3cm;
+    }
+
+    table#blocks {
+        table-layout: fixed;
+    }
+
+    table#blocks td {
+        overflow: hidden;
+    }
+
+    table#transactions {
+        table-layout: fixed;
+    }
+
+    table#transactions td {
+        overflow: hidden;
+    }
+</style>
+</body>
+</html>

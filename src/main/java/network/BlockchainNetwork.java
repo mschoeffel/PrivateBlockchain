@@ -7,6 +7,7 @@ import models.Transaction;
 import network.adapters.BlockAdapter;
 import network.adapters.BlockchainAdapter;
 import network.adapters.TransactionAdapter;
+import org.apache.log4j.Logger;
 import org.jgroups.*;
 import threads.MinerListener;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 public class BlockchainNetwork extends ReceiverAdapter implements MinerListener {
 
+    private static Logger logger = Logger.getLogger(BlockchainNetwork.class);
     private static Genson genson = new Genson();
     private JChannel channel;
     private View view;
@@ -31,6 +33,8 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
         channel.setDiscardOwnMessages(true);
         channel.connect("PrivateBlockchain");
         channel.getState(null, 0);
+
+        logger.info(channel.getAddressAsString() + " BlockchainNetwork started");
     }
 
     @Override
@@ -99,6 +103,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
         try{
             sendBlock(block);
         } catch(Exception e){
+            logger.error("Could not sen block: " + block);
             e.printStackTrace();
         }
     }

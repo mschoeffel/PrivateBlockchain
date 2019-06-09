@@ -6,6 +6,7 @@ import com.owlike.genson.GensonBuilder;
 import com.owlike.genson.ext.jaxrs.GensonJaxRSFeature;
 import logic.DependencyManager;
 import network.BlockchainNetwork;
+import org.apache.log4j.Logger;
 import org.glassfish.jersey.server.ResourceConfig;
 import threads.Miner;
 
@@ -17,8 +18,10 @@ import java.util.Set;
 @ApplicationPath("blockchain/api")
 public class Application extends ResourceConfig {
 
+    private static Logger logger = Logger.getLogger( Application.class );
+
     public Application() {
-        packages(true, "de.etherbasics.basisblockchain.api.services");
+        packages(true, "api.services");
         registerClasses(getServiceClasses());
         register(new GensonJaxRSFeature().use(new GensonBuilder()
                 .setSkipNull(true)
@@ -31,6 +34,7 @@ public class Application extends ResourceConfig {
 
         if (blockchainNetwork == null) {
             //Blockchain Network could not be instanciated
+            logger.error("Blockchain Network could not be instantiated.");
         }
 
         Miner miner = DependencyManager.getMiner();

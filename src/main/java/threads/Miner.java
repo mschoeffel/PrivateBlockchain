@@ -5,6 +5,7 @@ import logic.DependencyManager;
 import logic.PendingTransactions;
 import models.Block;
 import models.Transaction;
+import org.apache.log4j.Logger;
 import utils.SignatureUtil;
 
 import java.security.KeyPair;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 public class Miner implements Runnable {
 
+    private final static Logger logger = Logger.getLogger( Miner.class );
     private List<MinerListener> listeners = new ArrayList<>();
     private boolean mining = true;
     private boolean cancelBlock = false;
@@ -29,6 +31,7 @@ public class Miner implements Runnable {
 
     @Override
     public void run() {
+        logger.info("Miner started");
         while (isMining()) {
             block = getNewBlockFromMining();
 
@@ -70,6 +73,9 @@ public class Miner implements Runnable {
     }
 
     private void blockMined(Block block) {
+
+        logger.debug("Block mined");
+
         block.setCoinbase(SignatureUtil.getCoinbaseFromPublicKey(keyPair));
 
         if (block.getTransactions().size() > 0) {
@@ -87,6 +93,7 @@ public class Miner implements Runnable {
     }
 
     public void stopMining() {
+        logger.info("Miner stopped");
         this.mining = false;
     }
 
