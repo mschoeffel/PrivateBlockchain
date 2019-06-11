@@ -1,5 +1,8 @@
 package utils.merkle;
 
+import api.converters.HashConverter;
+import api.converters.HashListConverter;
+import com.owlike.genson.annotation.JsonConverter;
 import models.Transaction;
 import org.apache.log4j.Logger;
 import org.bouncycastle.util.Arrays;
@@ -74,6 +77,7 @@ public class MerkleTree {
         return nextLayer;
     }
 
+    @JsonConverter(HashListConverter.class)
     public List<byte[]> getHashesForTransactionHash(byte[] hash) {
         List<byte[]> hashList = new CopyOnWriteArrayList<>();
 

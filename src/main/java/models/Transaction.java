@@ -3,6 +3,7 @@ package models;
 import api.converters.HashConverter;
 import com.owlike.genson.annotation.JsonConverter;
 import com.owlike.genson.annotation.JsonIgnore;
+import org.apache.log4j.Logger;
 import utils.SHA3Util;
 
 import java.io.Serializable;
@@ -17,6 +18,8 @@ import java.util.Objects;
  * Class that represents a transaction of the blockchain network
  */
 public class Transaction implements Serializable {
+
+    Logger logger = Logger.getLogger(Transaction.class);
 
     private byte[] sender; //The sender of the transaction
     private byte[] receiver; //The receiver of the transaction
@@ -75,6 +78,7 @@ public class Transaction implements Serializable {
      * Creates the txId / Hash of the Transaction.
      */
     private void createTxId() {
+        logger.info("Transaction: New transaction created.");
         this.txId = SHA3Util.hash256(this);
     }
 

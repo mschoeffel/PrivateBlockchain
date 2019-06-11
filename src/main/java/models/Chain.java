@@ -1,25 +1,33 @@
 package models;
 
+import org.apache.log4j.Logger;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Chain {
+    Logger logger = Logger.getLogger(Chain.class);
     private List<Block> chain = new CopyOnWriteArrayList<>();
     private int networkId;
 
-    public Chain(){}
+    public Chain(){
+        logger.info("Chain: Chain created.");
+    }
 
     public Chain(int networkId, List<Block> chain){
+        super();
         this.networkId = networkId;
         this.chain = chain;
     }
 
     public Chain(int networkId){
+        super();
         this.networkId = networkId;
         chain.add(new GenesisBlock());
     }
 
     public void add(Block block){
+        logger.info("Chain: Block added.");
         chain.add(block);
     }
 
@@ -28,7 +36,7 @@ public class Chain {
     }
 
     public Block getLast(){
-        return chain.get(chain.size() == 0 ? 0 : (chain.size() - 1));
+        return chain.get((chain.size() == 0) ? 0 : (chain.size() - 1));
     }
 
     public int size(){
@@ -40,6 +48,7 @@ public class Chain {
     }
 
     public void setChain(List<Block> chain) {
+        logger.info("Chain: New chain set.");
         this.chain = chain;
     }
 

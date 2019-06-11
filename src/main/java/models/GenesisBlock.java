@@ -2,8 +2,7 @@ package models;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-
-import java.io.InputStream;
+import org.apache.log4j.Logger;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Map;
@@ -11,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GenesisBlock extends Block {
 
+    Logger logger = Logger.getLogger(GenesisBlock.class);
     private static byte[] ZERO_HASH = new byte[32];
     private static byte[] ZERO_ACCOUNT = new byte[65];
 
@@ -27,6 +27,7 @@ public class GenesisBlock extends Block {
 
     public GenesisBlock(){
         super(ZERO_HASH);
+        logger.info("GenesisBlock: New Genesisblock created.");
         this.setCoinbase(ZERO_ACCOUNT);
         this.accountBalances = new ConcurrentHashMap<>();
         initializeAccounts();
@@ -41,7 +42,8 @@ public class GenesisBlock extends Block {
                 accountBalances.put(record.get("account"), Double.parseDouble(record.get("balance")));
             }
         } catch(final Exception e){
-
+            logger.error("GenesisBlock: Error initializing accounts.", e);
+            e.printStackTrace();
         }
     }
 
