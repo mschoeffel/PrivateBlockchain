@@ -20,7 +20,7 @@ public class DispatcherService {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{hash}")
     public Response searchForHash(@PathParam("hash") String hash) {
-        Response response;
+        Response response = null;
 
         if (hash.length() == 130) {
             Account account = DependencyManager.getAccountStorage().getAccount(hash);
@@ -31,7 +31,7 @@ public class DispatcherService {
                 response = Response.ok(account).build();
             }
         } else {
-            Transaction transaction;
+            Transaction transaction = null;
             Block block = DependencyManager.getBlockchain().getBlockByHash(hash);
 
             if (block == null) {

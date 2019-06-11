@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Chain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Chain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/GenesisBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/GenesisBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,36 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTreeElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="67" column="65" lean-forward="true" selection-start-line="67" selection-start-column="65" selection-end-line="67" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Chain.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,6 +43,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/Persistence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/persistence/AccountPersistence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/GenesisBlock.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
@@ -87,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
@@ -99,48 +84,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SizeUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="229" column="27" selection-start-line="229" selection-start-column="27" selection-end-line="229" selection-end-column="27" />
+            <state relative-caret-position="-1584">
+              <caret line="90" column="68" selection-start-line="90" selection-start-column="68" selection-end-line="90" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9002#9003#0" expanded="true" />
-                <element signature="e#9037#9038#0" expanded="true" />
+                <element signature="e#6989#6990#0" expanded="true" />
+                <element signature="e#7032#7033#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="716">
-              <caret line="52" column="69" selection-start-line="52" selection-start-column="69" selection-end-line="52" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="96">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/accounts/847dbbe5-84b8-4734-8e97-b751a464f86c.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -184,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/main/java/network/adapters/TransactionAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/DependencyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" />
@@ -209,13 +195,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/threads/Miner.java" />
         <option value="$PROJECT_DIR$/src/main/java/network/MessageHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/PendingTransactions.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Chain.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/GenesisBlock.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" />
       </list>
     </option>
   </component>
@@ -280,7 +267,49 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="converters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="logic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="persistence" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
@@ -458,7 +487,7 @@
       <workItem from="1559916848300" duration="806000" />
       <workItem from="1560101057633" duration="3111000" />
       <workItem from="1560105108843" duration="2537000" />
-      <workItem from="1560271018582" duration="2689000" />
+      <workItem from="1560271018582" duration="3428000" />
     </task>
     <servers />
   </component>
@@ -477,7 +506,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36957000" />
+    <option name="totallyTimeSpent" value="37696000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="0" width="761" height="966" extended-state="0" />
@@ -520,63 +549,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/threads/MinerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/TransactionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="90" column="18" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="68" column="15" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/BlockHeader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1224">
@@ -812,18 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="229" column="27" selection-start-line="229" selection-start-column="27" selection-end-line="229" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9002#9003#0" expanded="true" />
-            <element signature="e#9037#9038#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="716">
@@ -865,6 +825,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/GenesisBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="137" column="57" lean-forward="true" selection-start-line="137" selection-start-column="57" selection-end-line="137" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/847dbbe5-84b8-4734-8e97-b751a464f86c.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/Chain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
@@ -887,22 +870,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/GenesisBlock.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/Persistence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Transaction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/persistence/AccountPersistence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="137" column="57" lean-forward="true" selection-start-line="137" selection-start-column="57" selection-end-line="137" selection-end-column="57" />
+        <state relative-caret-position="96">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584">
+          <caret line="90" column="68" selection-start-line="90" selection-start-column="68" selection-end-line="90" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6989#6990#0" expanded="true" />
+            <element signature="e#7032#7033#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -83,6 +83,12 @@ public class Blockchain {
             } else {
                 checkAltChains(previousBlockHash, block);
             }
+
+            blockCache.put(SHA3Util.digestToHex(block.getBlockHash()), block);
+
+            block.getTransactions().forEach(transaction -> transactionCache.put(transaction.getTxIdAsString(), transaction));
+
+            DependencyManager.getAccountStorage().parseBlock(block);
         }
     }
 
