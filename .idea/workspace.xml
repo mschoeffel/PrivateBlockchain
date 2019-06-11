@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/PendingTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/PendingTransactions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,8 +55,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+            <state relative-caret-position="309">
+              <caret line="67" column="65" lean-forward="true" selection-start-line="67" selection-start-column="65" selection-end-line="67" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -456,7 +453,7 @@
       <workItem from="1559916848300" duration="806000" />
       <workItem from="1560101057633" duration="3111000" />
       <workItem from="1560105108843" duration="2537000" />
-      <workItem from="1560271018582" duration="985000" />
+      <workItem from="1560271018582" duration="1277000" />
     </task>
     <servers />
   </component>
@@ -475,10 +472,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35253000" />
+    <option name="totallyTimeSpent" value="35545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="0" width="761" height="966" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49817517" weight="0.5604552" />
       <window_info id="Structure" order="1" sideWeight="0.5018248" side_tool="true" weight="0.25604552" />
@@ -900,8 +898,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+        <state relative-caret-position="309">
+          <caret line="67" column="65" lean-forward="true" selection-start-line="67" selection-start-column="65" selection-end-line="67" selection-end-column="65" />
         </state>
       </provider>
     </entry>

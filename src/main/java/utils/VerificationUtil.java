@@ -1,6 +1,8 @@
 package utils;
 
+import accounts.Account;
 import logic.Blockchain;
+import logic.DependencyManager;
 import models.Block;
 import models.Transaction;
 import org.apache.log4j.Logger;
@@ -55,12 +57,16 @@ public class VerificationUtil {
     }
 
     public static boolean verifyBalance(Transaction transaction){
-        //TODO
-        return true;
+        logger.info("Verification: Verify Balance.");
+        Account account = DependencyManager.getAccountStorage().getAccount(transaction.getSender());
+        double totalCost = transaction.getAmount() + (transaction.getTransactionFeeBasePrice() * Blockchain.TRANSACTION_FEE_UNITS);
+        logger.info("Verification: Balance verified? " + (totalCost <= (account.getBalance() - account.getLockedBalance())));
+        return totalCost <= (account.getBalance() - account.getLockedBalance());
     }
 
     public static boolean verifyPendingTransactions(Transaction transaction){
-        //TODO
-        return true;
+        logger.info("Verification: Verify pending transaction.");
+        logger.info("Verification: Pending transaction verified? " + (DependencyManager.getPendingTransactions().areThereNoOtherTransactionsFor(transaction)));
+        return DependencyManager.getPendingTransactions().areThereNoOtherTransactionsFor(transaction);
     }
 }
