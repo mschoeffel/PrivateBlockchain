@@ -31,7 +31,7 @@ public class Miner implements Runnable {
 
     @Override
     public void run() {
-        logger.info("Miner started");
+        logger.info("Miner: Miner started.");
         while (isMining()) {
             block = getNewBlockFromMining();
 
@@ -53,6 +53,8 @@ public class Miner implements Runnable {
     }
 
     private Block getNewBlockFromMining() {
+        logger.info("Miner: Creating new Block.");
+
         PendingTransactions pendingTransactions = DependencyManager.getPendingTransactions();
         Blockchain blockchain = DependencyManager.getBlockchain();
         List<Transaction> transactions = pendingTransactions.getTransactionsForNextBlock();
@@ -66,6 +68,8 @@ public class Miner implements Runnable {
     }
 
     private void restartMining() {
+        logger.info("Miner: Mining restarted.");
+
         PendingTransactions pendingTransactions = DependencyManager.getPendingTransactions();
         List<Transaction> transactions = pendingTransactions.getTransactionsForNextBlock();
 
@@ -74,7 +78,7 @@ public class Miner implements Runnable {
 
     private void blockMined(Block block) {
 
-        logger.debug("Block mined");
+        logger.info("Miner: Block mined");
 
         block.setCoinbase(SignatureUtil.getCoinbaseFromPublicKey(keyPair));
 
@@ -93,7 +97,7 @@ public class Miner implements Runnable {
     }
 
     public void stopMining() {
-        logger.info("Miner stopped");
+        logger.info("Miner: Miner stopped.");
         this.mining = false;
     }
 
