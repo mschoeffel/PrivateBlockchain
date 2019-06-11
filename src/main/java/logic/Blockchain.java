@@ -71,6 +71,7 @@ public class Blockchain {
     }
 
     public synchronized void addBlock(Block block) {
+        logger.info("Blockchain: New block added.");
         if (VerificationUtil.verifyBlock(block)) {
             byte[] previousBlockHash = block.getBlockHeader().getPreviousHash();
 
@@ -120,6 +121,7 @@ public class Blockchain {
 
     private void switchChainsIfNecessary(Chain chain) {
         if (chain.size() > this.chain.size()) {
+            logger.info("Blockchain: Chain switched.");
             correctPendingTransactions(this.chain, chain);
             this.chain = chain;
             this.bestBlock = chain.getLast();

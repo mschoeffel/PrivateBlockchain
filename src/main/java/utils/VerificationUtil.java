@@ -13,6 +13,7 @@ public class VerificationUtil {
     private static Logger logger = Logger.getLogger(VerificationUtil.class);
 
     public static boolean verifyBlock(Block block){
+        logger.info("Verification: Verify block.");
         boolean fulfillsDifficulty = true; //TODO
         boolean correctVesion = Blockchain.VERSION == block.getBlockHeader().getVersion();
         boolean transactionVerified = true;
@@ -26,6 +27,7 @@ public class VerificationUtil {
             }
         }
 
+        logger.info("Verification: Block verified? " + (fulfillsDifficulty && correctVesion && transactionVerified &&merkleTreeVerified));
         return fulfillsDifficulty && correctVesion && transactionVerified &&merkleTreeVerified;
     }
 
@@ -38,6 +40,7 @@ public class VerificationUtil {
     }
 
     public static boolean verifySignature(Transaction transaction){
+        logger.info("Verification: Verify signature.");
         boolean result;
         try{
             logger.debug(transaction.asJSONString());
@@ -47,6 +50,7 @@ public class VerificationUtil {
         } catch(Exception e){
             result = false;
         }
+        logger.info("Verification: Signature verified? " + result);
         return result;
     }
 

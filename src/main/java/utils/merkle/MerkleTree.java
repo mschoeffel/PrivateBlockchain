@@ -28,17 +28,17 @@ public class MerkleTree {
      * @param transactions List of transactions to store in the tree.
      */
     private void initMerkleTree(List<Transaction> transactions) {
-        logger.debug("init merkle tree");
+        logger.debug("MerkleTree: Init.");
 
         List<MerkleTreeElement> elements = new ArrayList<>();
 
         for (Transaction transaction : transactions) {
-            logger.debug("adding transactions");
+            logger.debug("MerkleTree: Adding transactions.");
             elements.add(new MerkleTreeElement(transaction.getTxId()));
         }
 
         while (elements.size() > 1) {
-            logger.debug("building next layer of merkle tree");
+            logger.debug("MerkleTree: Building next layer.");
             elements = getNextLayer(elements);
         }
 
@@ -48,7 +48,7 @@ public class MerkleTree {
             root = new MerkleTreeElement(SHA3Util.hash256((Serializable) transactions));
         }
 
-        logger.debug("finished init: " + SHA3Util.digestToHex(root.getHash()));
+        logger.debug("MerkleTree: Finished init: " + SHA3Util.digestToHex(root.getHash()));
     }
 
     /**

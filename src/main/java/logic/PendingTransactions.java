@@ -2,6 +2,7 @@ package logic;
 
 import models.Block;
 import models.Transaction;
+import org.apache.log4j.Logger;
 import utils.SizeUtil;
 import utils.TransactionComparatorByFee;
 
@@ -9,6 +10,7 @@ import java.util.*;
 
 public class PendingTransactions {
 
+    Logger logger = Logger.getLogger(PendingTransactions.class);
     private PriorityQueue<Transaction> pendingTransactions;
 
     public PendingTransactions(){
@@ -17,14 +19,17 @@ public class PendingTransactions {
     }
 
     public void addPendingTransaction(Transaction transaction){
+        logger.info("PendingTransactions: Transaction added.");
         pendingTransactions.add(transaction);
     }
 
     public void addPendingTransactions(Collection<Transaction> transactions){
+        logger.info("PendingTransactions: Transactions added.");
         transactions.forEach(this::addPendingTransaction);
     }
 
     public List<Transaction> getTransactionsForNextBlock(){
+        logger.info("PendingTransactions: Receive transactions for next block.");
         List<Transaction> nextTransactions = new ArrayList<>();
 
         int transactionCapacity = SizeUtil.calculateTransactionCapacity();
