@@ -3,6 +3,7 @@ package models;
 import api.converters.HashConverter;
 import com.owlike.genson.annotation.JsonConverter;
 import com.owlike.genson.annotation.JsonIgnore;
+import org.apache.log4j.Logger;
 import utils.SizeUtil;
 import utils.merkle.MerkleTree;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class Block {
 
+    private Logger logger = Logger.getLogger(Block.class);
     private int magicNumber = 0xD9B4BEF9; //Magic number
     private int blockSize; //Size of the block
     private int transactionCount; //Number of transactions
@@ -24,9 +26,12 @@ public class Block {
 
     private BlockHeader blockHeader;
 
-    public Block() {}
+    public Block() {
+        logger.info("Block: Block created.");
+    }
 
     public Block(byte[] previousHash) {
+        super();
         this.transactionCount = 0;
         this.transactions = new ArrayList<>();
         this.blockSize = SizeUtil.calculateBlockSize(this);
@@ -35,6 +40,7 @@ public class Block {
     }
 
     public Block(List<Transaction> transactions, byte[] previousHash) {
+        super();
         this.transactions = transactions;
         this.transactionCount = transactions.size( );
         this.blockSize = SizeUtil.calculateBlockSize( this );

@@ -34,7 +34,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
         channel.connect("PrivateBlockchain");
         channel.getState(null, 0);
 
-        logger.info(channel.getAddressAsString() + " BlockchainNetwork started");
+        logger.info("BlockchainNetwork: BlockchainNetwork started: " + channel.getAddressAsString());
     }
 
     @Override

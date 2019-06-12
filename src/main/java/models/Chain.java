@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Chain {
-    Logger logger = Logger.getLogger(Chain.class);
+    private Logger logger = Logger.getLogger(Chain.class);
     private List<Block> chain = new CopyOnWriteArrayList<>();
     private int networkId;
 
@@ -32,7 +32,11 @@ public class Chain {
     }
 
     public Block get(int index){
-        return chain.get(index);
+        if(index < chain.size()) {
+            return chain.get(index);
+        } else{
+            return null;
+        }
     }
 
     public Block getLast(){

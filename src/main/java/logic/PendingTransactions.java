@@ -10,7 +10,7 @@ import java.util.*;
 
 public class PendingTransactions {
 
-    Logger logger = Logger.getLogger(PendingTransactions.class);
+    private Logger logger = Logger.getLogger(PendingTransactions.class);
     private PriorityQueue<Transaction> pendingTransactions;
 
     public PendingTransactions(){

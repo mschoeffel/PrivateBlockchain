@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 public class Transaction implements Serializable {
 
-    Logger logger = Logger.getLogger(Transaction.class);
+    private Logger logger = Logger.getLogger(Transaction.class);
 
     private byte[] sender; //The sender of the transaction
     private byte[] receiver; //The receiver of the transaction

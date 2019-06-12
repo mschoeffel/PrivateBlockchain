@@ -21,6 +21,7 @@ public class Application extends ResourceConfig {
     private static Logger logger = Logger.getLogger( Application.class );
 
     public Application() {
+        logger.info("Application: Application started.");
         packages(true, "api.services");
         registerClasses(getServiceClasses());
         register(new GensonJaxRSFeature().use(new GensonBuilder()
@@ -30,6 +31,7 @@ public class Application extends ResourceConfig {
                 .useDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"))
                 .create()));
 
+        logger.info("Application: Get blockchain.");
         BlockchainNetwork blockchainNetwork = DependencyManager.getBlockchainNetwork();
 
         if (blockchainNetwork == null) {
@@ -37,9 +39,11 @@ public class Application extends ResourceConfig {
             logger.error("Blockchain Network could not be instantiated.");
         }
 
+        logger.info("Application: Create Miner.");
         Miner miner = DependencyManager.getMiner();
         miner.registerListener(blockchainNetwork);
 
+        logger.info("Application: Start Miner.");
         Thread thread = new Thread(miner);
         thread.start();
     }

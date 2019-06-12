@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GenesisBlock extends Block {
 
-    Logger logger = Logger.getLogger(GenesisBlock.class);
+    private Logger logger = Logger.getLogger(GenesisBlock.class);
     private static byte[] ZERO_HASH = new byte[32];
     private static byte[] ZERO_ACCOUNT = new byte[65];
 
