@@ -4,7 +4,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
 
-public class main {
+public class mainSecond {
 
     public static void main(String[] args){
         try{
@@ -12,7 +12,7 @@ public class main {
 
             String webappDirectory = new File("src/main/webapp").getAbsolutePath();
 
-            tomcat.setPort(8080);
+            tomcat.setPort(8081);
             Context context = tomcat.addWebapp("", webappDirectory);
 
             Tomcat.addServlet(context, "blockchain", new ServletContainer(new Application()));
