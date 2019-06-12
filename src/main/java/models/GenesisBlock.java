@@ -35,7 +35,7 @@ public class GenesisBlock extends Block {
 
     private void initializeAccounts(){
         try{
-            final Reader in = new InputStreamReader(this.getClass().getResourceAsStream("initialAccounts.csv"), "UTF-8");
+            final Reader in = new InputStreamReader(this.getClass().getResourceAsStream("/initialAccounts.csv"), "UTF-8");
             final Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().withDelimiter(';').parse(in);
 
             for(final CSVRecord record : records){
