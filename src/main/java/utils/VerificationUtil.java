@@ -16,7 +16,7 @@ public class VerificationUtil {
 
     public static boolean verifyBlock(Block block){
         logger.info("Verification: Verify block.");
-        boolean fulfillsDifficulty = true; //TODO
+        boolean fulfillsDifficulty = DependencyManager.getBlockchain().fulfillsDifficulty(block.getBlockHash());
         boolean correctVesion = Blockchain.VERSION == block.getBlockHeader().getVersion();
         boolean transactionVerified = true;
         boolean merkleTreeVerified = Arrays.equals(block.getBlockHeader().getTransactionListHash(), new MerkleTree(block.getTransactions()).getMerkleTreeRoot());

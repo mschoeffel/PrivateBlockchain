@@ -1,6 +1,5 @@
 package utils;
 
-import com.sun.org.apache.xalan.internal.xsltc.DOM;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Integer;
 import org.bouncycastle.asn1.DLSequence;
@@ -16,7 +15,6 @@ import persistence.AccountPersistence;
 
 import java.math.BigInteger;
 import java.security.*;
-import java.security.spec.ECParameterSpec;
 import java.util.Arrays;
 
 public class SignatureUtil {
