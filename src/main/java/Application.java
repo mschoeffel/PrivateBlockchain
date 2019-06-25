@@ -15,6 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Main Application of the blockchain
+ */
 @ApplicationPath("blockchain/api")
 public class Application extends ResourceConfig {
 

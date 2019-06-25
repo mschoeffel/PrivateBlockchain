@@ -4,10 +4,13 @@ import org.glassfish.jersey.servlet.ServletContainer;
 
 import java.io.File;
 
+/**
+ * Represents a second user of the blockchain on a different webserver port but with the same blockchain
+ */
 public class mainSecond {
 
-    public static void main(String[] args){
-        try{
+    public static void main(String[] args) {
+        try {
             Tomcat tomcat = new Tomcat();
 
             String webappDirectory = new File("src/main/webapp").getAbsolutePath();
@@ -20,7 +23,7 @@ public class mainSecond {
 
             tomcat.start();
             tomcat.getServer().await();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
