@@ -21,8 +21,12 @@ import java.util.Set;
 @ApplicationPath("blockchain/api")
 public class Application extends ResourceConfig {
 
+    //Logger to show additional information
     private static Logger logger = Logger.getLogger( Application.class );
 
+    /**
+     * Creates and starts the blockchain application with miner in a different thread attached
+     */
     public Application() {
         logger.info("Application: Application started.");
         packages(true, "api.services");
@@ -34,6 +38,7 @@ public class Application extends ResourceConfig {
                 .useDateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"))
                 .create()));
 
+        //Gets the blockchain form the dependency manager (So the blockchain is either created new or if already a blockchain is existing the existing one will be used)
         logger.info("Application: Get blockchain.");
         BlockchainNetwork blockchainNetwork = DependencyManager.getBlockchainNetwork();
 
@@ -42,10 +47,12 @@ public class Application extends ResourceConfig {
             logger.error("Blockchain Network could not be instantiated.");
         }
 
+        //Creating a miner to the blockchain
         logger.info("Application: Create Miner.");
         Miner miner = DependencyManager.getMiner();
         miner.registerListener(blockchainNetwork);
 
+        //Starting the miner
         logger.info("Application: Start Miner.");
         Thread thread = new Thread(miner);
         thread.start();
