@@ -11,11 +11,17 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 
+/**
+ * Class to store a account persistent
+ */
 public class AccountPersistence {
 
     private Charset encoding = StandardCharsets.UTF_8;
     private String path = "accounts/";
 
+    /**
+     * Creates a new account persistence
+     */
     public AccountPersistence() {
         File file = new File(path);
         if (!file.exists()) {
@@ -23,7 +29,12 @@ public class AccountPersistence {
         }
     }
 
-    public void saveKeyPait(KeyPair keyPair, String minerId) {
+    /**
+     * Writes a account key pair to the account storage
+     * @param keyPair KeyPair to store
+     * @param minerId Id of the corresponding miner
+     */
+    public void saveKeyPair(KeyPair keyPair, String minerId) {
         File file = new File(path + minerId + ".json");
 
         try (OutputStreamWriter outputStream = new OutputStreamWriter(new FileOutputStream(file), encoding)) {

@@ -63,7 +63,7 @@ public class SignatureUtil {
 
     public static void saveKeyPair(KeyPair keyPair, String minerId) {
         AccountPersistence accountPersistence = new AccountPersistence();
-        accountPersistence.saveKeyPait(keyPair, minerId);
+        accountPersistence.saveKeyPair(keyPair, minerId);
     }
 
     public static byte[] getCoinbaseFromPublicKey(KeyPair keyPair) {
