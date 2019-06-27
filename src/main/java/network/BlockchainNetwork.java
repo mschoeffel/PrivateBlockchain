@@ -15,14 +15,26 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+/**
+ * The main blockchain network
+ */
 public class BlockchainNetwork extends ReceiverAdapter implements MinerListener {
 
+    //Logger to show some additional information
     private static Logger logger = Logger.getLogger(BlockchainNetwork.class);
+    //Genson to serialize and deserialize objects
     private static Genson genson = new Genson();
+    //Communication channel (network channel)
     private JChannel channel;
+    //View for the channel
     private View view;
+    //Message handler for the channel
     private MessageHandler handler;
 
+    /**
+     * Creates a new blockchain network with network channel etc.
+     * @throws Exception Exception if the network cant be started
+     */
     public BlockchainNetwork() throws Exception {
         handler = new MessageHandler();
 
@@ -37,6 +49,10 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
         logger.info("BlockchainNetwork: BlockchainNetwork started: " + channel.getAddressAsString());
     }
 
+    /**
+     * Receives a message and handles the message -> deserialization of the message
+     * @param msg Message
+     */
     @Override
     public void receive(Message msg) {
         try {
@@ -51,59 +67,95 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
         }
     }
 
+    /**
+     * Registering a new view to the network
+     * @param view View to register
+     */
     @Override
     public void viewAccepted(View view) {
         if (this.view == null) {
             view.forEach(System.out::println);
         } else {
             List<Address> newMembers = View.newMembers(this.view, view);
-            System.out.println("New members: ");
+            logger.info("BlockchainNetwork: View: New members: ");
             newMembers.forEach(System.out::println);
 
             List<Address> exMembers = View.leftMembers(this.view, view);
-            System.out.println("Exited members:");
+            logger.info("BlockchainNetwork: View: Exited members:");
             exMembers.forEach(System.out::println);
         }
         this.view = view;
     }
 
+    /**
+     * Serializes the blockchain network state
+     * @param output Stream where to serialize to
+     */
     @Override
-    public void getState(OutputStream output){
+    public void getState(OutputStream output) {
         genson.serialize(new BlockchainAdapter(DependencyManager.getBlockchain()), output);
     }
 
+    /**
+     * Sets the blockchain network state
+     * @param input Inputstream to read from
+     */
     @Override
-    public void setState(InputStream input){
+    public void setState(InputStream input) {
         BlockchainAdapter blockchainAdapter = genson.deserialize(input, BlockchainAdapter.class);
 
         DependencyManager.injectBlockchain(blockchainAdapter.getBlockchain());
         DependencyManager.getAccountStorage();
     }
 
-    public void sendTransaction(Transaction transaction) throws Exception{
+    /**
+     * Sends a transaction
+     * @param transaction Transaction to send
+     * @throws Exception Exception if the Transaction couldn't be sent
+     */
+    public void sendTransaction(Transaction transaction) throws Exception {
         Message message = new Message(null, transactionToJSON(transaction));
         channel.send(message);
     }
 
-    private byte[] transactionToJSON(Transaction transaction){
+    /**
+     * Serializes a transaction to JSON
+     * @param transaction Transaction to serialize
+     * @return Serialized transaction in JSON as byte Array
+     */
+    private byte[] transactionToJSON(Transaction transaction) {
         return genson.serializeBytes(new TransactionAdapter(transaction));
     }
 
-    public void sendBlock(Block block) throws Exception{
+    /**
+     * Sends a block to the channel
+     * @param block Block to send
+     * @throws Exception Exception if the sending went wrong
+     */
+    public void sendBlock(Block block) throws Exception {
         Message message = new Message(null, blockToJSON(block));
         channel.send(message);
     }
 
-    private byte[] blockToJSON(Block block){
+    /**
+     * Serializes a block to JSON
+     * @param block Block to serialize
+     * @return Serialized block in JSON as byte Array
+     */
+    private byte[] blockToJSON(Block block) {
         return genson.serializeBytes(new BlockAdapter(block));
     }
 
+    /**
+     * Notifies a block to the network
+     * @param block Block to notify
+     */
     @Override
-    public void notifyNewBlock(Block block){
-        try{
+    public void notifyNewBlock(Block block) {
+        try {
             sendBlock(block);
-        } catch(Exception e){
-            logger.error("Could not sen block: " + block);
+        } catch (Exception e) {
+            logger.error("Could not send block: " + block);
             e.printStackTrace();
         }
     }
