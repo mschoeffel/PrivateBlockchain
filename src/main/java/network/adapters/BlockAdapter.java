@@ -9,20 +9,40 @@ import models.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Block adapter to wrap a block
+ */
 public class BlockAdapter {
+
+    //Wrapped block
     private Block block;
 
+    /**
+     * Creates a new block adapter with new block
+     */
     public BlockAdapter() {
         this.block = new Block();
     }
 
+    /**
+     * Creates a new block adapter with given block
+     *
+     * @param block Given block to wrap
+     */
     public BlockAdapter(Block block) {
         this.block = block;
     }
 
+    /**
+     * Returns the type of adapter
+     *
+     * @return Type of the adapter
+     */
     public String getType() {
         return "BlockAdapter";
     }
+
+    //Wrapping methods:
 
     @JsonIgnore
     public Block getBlock() {

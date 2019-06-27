@@ -5,20 +5,40 @@ import com.owlike.genson.annotation.JsonConverter;
 import com.owlike.genson.annotation.JsonIgnore;
 import models.Transaction;
 
+/**
+ * Transaction adapter to wrap a transaction
+ */
 public class TransactionAdapter {
+
+    //Transaction to wrap
     private Transaction transaction;
 
+    /**
+     * Creates a new transaction adapter with new transaction
+     */
     public TransactionAdapter() {
         this.transaction = new Transaction();
     }
 
+    /**
+     * Creates a new transaction adapter with given transaction
+     *
+     * @param transaction Given transaction to wrap
+     */
     public TransactionAdapter(Transaction transaction) {
         this.transaction = transaction;
     }
 
+    /**
+     * Returns the type of the adapter
+     *
+     * @return Type of the adapter
+     */
     public String getType() {
         return "TransactionAdapter";
     }
+
+    //Wrapping methods:
 
     @JsonIgnore
     public Transaction getTransaction() {

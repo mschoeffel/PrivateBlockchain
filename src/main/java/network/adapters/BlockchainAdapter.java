@@ -9,20 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Blockchain adapter to wrap a blockchain
+ */
 public class BlockchainAdapter {
+
+    //blockchain to warp
     private Blockchain blockchain;
 
+    //Difficulty of the blockchain
     private BigInteger difficulty;
 
+    //Alternative chains
     private List<Chain> altChains;
 
+    /**
+     * Creates new empty blockchain adapter
+     */
     public BlockchainAdapter() {
-
     }
 
+    /**
+     * Creates new blockchain adapter with given blockchain
+     *
+     * @param blockchain Given blockchain to wrap
+     */
     public BlockchainAdapter(Blockchain blockchain) {
         this.blockchain = blockchain;
     }
+
+    //Wrappering methods:
 
     @JsonIgnore
     public Blockchain getBlockchain() {

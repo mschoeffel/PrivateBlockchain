@@ -8,16 +8,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * Chain adapter to wrap a chain
+ */
 public class ChainAdapter {
+
+    //Chain to wrap
     private Chain chain;
 
+    /**
+     * Creates a new chain adapter with new chain
+     */
     public ChainAdapter() {
         this.chain = new Chain();
     }
 
+    /**
+     * Creates new chain adapter with given chain
+     *
+     * @param chain Given chain to wrap
+     */
     public ChainAdapter(Chain chain) {
         this.chain = chain;
     }
+
+    //Wrapping methods:
 
     @JsonIgnore
     public Chain getChainObject() {

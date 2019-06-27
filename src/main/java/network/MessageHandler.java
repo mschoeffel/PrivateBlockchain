@@ -22,6 +22,7 @@ public class MessageHandler {
 
     /**
      * Handles a new transaction
+     *
      * @param transactionAdapter New received transaction adapter with a transaction
      */
     public void handleTransaction(TransactionAdapter transactionAdapter) {
@@ -31,6 +32,7 @@ public class MessageHandler {
 
     /**
      * Handles a new block
+     *
      * @param blockAdapter New received block adapter with a block
      */
     public void handleBlock(BlockAdapter blockAdapter) {

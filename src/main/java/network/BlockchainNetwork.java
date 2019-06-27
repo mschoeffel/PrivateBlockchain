@@ -33,6 +33,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Creates a new blockchain network with network channel etc.
+     *
      * @throws Exception Exception if the network cant be started
      */
     public BlockchainNetwork() throws Exception {
@@ -51,6 +52,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Receives a message and handles the message -> deserialization of the message
+     *
      * @param msg Message
      */
     @Override
@@ -69,6 +71,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Registering a new view to the network
+     *
      * @param view View to register
      */
     @Override
@@ -89,6 +92,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Serializes the blockchain network state
+     *
      * @param output Stream where to serialize to
      */
     @Override
@@ -98,6 +102,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Sets the blockchain network state
+     *
      * @param input Inputstream to read from
      */
     @Override
@@ -110,6 +115,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Sends a transaction
+     *
      * @param transaction Transaction to send
      * @throws Exception Exception if the Transaction couldn't be sent
      */
@@ -120,6 +126,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Serializes a transaction to JSON
+     *
      * @param transaction Transaction to serialize
      * @return Serialized transaction in JSON as byte Array
      */
@@ -129,6 +136,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Sends a block to the channel
+     *
      * @param block Block to send
      * @throws Exception Exception if the sending went wrong
      */
@@ -139,6 +147,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Serializes a block to JSON
+     *
      * @param block Block to serialize
      * @return Serialized block in JSON as byte Array
      */
@@ -148,6 +157,7 @@ public class BlockchainNetwork extends ReceiverAdapter implements MinerListener 
 
     /**
      * Notifies a block to the network
+     *
      * @param block Block to notify
      */
     @Override

@@ -5,20 +5,40 @@ import com.owlike.genson.annotation.JsonConverter;
 import com.owlike.genson.annotation.JsonIgnore;
 import models.BlockHeader;
 
+/**
+ * Blockheader adapter to wrap a blockheader
+ */
 public class BlockHeaderAdapter {
+
+    //Wrapped blockheader
     private BlockHeader blockHeader;
 
+    /**
+     * Creates a new blockheader adapter with new blockheader
+     */
     public BlockHeaderAdapter() {
         this.blockHeader = new BlockHeader();
     }
 
+    /**
+     * Creates a new blockheader adapter with given blockheader
+     *
+     * @param blockHeader
+     */
     public BlockHeaderAdapter(BlockHeader blockHeader) {
         this.blockHeader = blockHeader;
     }
 
+    /**
+     * Returns the type of the adapter
+     *
+     * @return Type of the adapter
+     */
     public String getType() {
         return "BlockHeaderAdapter";
     }
+
+    //Wrapping methods:
 
     @JsonIgnore
     public BlockHeader getBlockHeader() {
