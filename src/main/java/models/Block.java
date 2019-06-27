@@ -15,23 +15,37 @@ import java.util.List;
  */
 public class Block {
 
+    //Logger to display additional information
     private Logger logger = Logger.getLogger(Block.class);
-    private int magicNumber = 0xD9B4BEF9; //Magic number
-    private int blockSize; //Size of the block
-    private int transactionCount; //Number of transactions
-    private int blockNumber; //Number of the Block
+    //Magic number
+    private int magicNumber = 0xD9B4BEF9;
+    //Size of the block
+    private int blockSize;
+    //Number of transactions per block
+    private int transactionCount;
+    //Number of the block
+    private int blockNumber;
+    //Coinbase of the block
     private byte[] coinbase;
-
+    //List of transactions
     private List<Transaction> transactions;
-
+    //Header of the block
     private BlockHeader blockHeader;
 
+    /**
+     * Creates a new empty block
+     */
     public Block() {
         logger.info("Block: Block created.");
     }
 
+    /**
+     * Creates a new block depending on the previous block
+     *
+     * @param previousHash Previous block hash
+     */
     public Block(byte[] previousHash) {
-        super();
+        this();
         this.transactionCount = 0;
         this.transactions = new ArrayList<>();
         this.blockSize = SizeUtil.calculateBlockSize(this);
@@ -39,23 +53,35 @@ public class Block {
         this.blockHeader = new BlockHeader(System.currentTimeMillis(), previousHash, getTransactionHash());
     }
 
+    /**
+     * Creates a new block depending on the previous block with a given list of transactions
+     *
+     * @param transactions List of transactions
+     * @param previousHash Previous block hash
+     */
     public Block(List<Transaction> transactions, byte[] previousHash) {
-        super();
+        this();
         this.transactions = transactions;
-        this.transactionCount = transactions.size( );
-        this.blockSize = SizeUtil.calculateBlockSize( this );
+        this.transactionCount = transactions.size();
+        this.blockSize = SizeUtil.calculateBlockSize(this);
         this.blockHeader = new BlockHeader(System.currentTimeMillis(), previousHash, getTransactionHash());
     }
 
     /**
      * Saves the transactions in a merkle tree and keeps the hash of the root element.
+     *
      * @return Hash of the root element of the merkle tree as Bytearray.
      */
     private byte[] getTransactionHash() {
         return new MerkleTree(transactions).getMerkleTreeRoot();
     }
 
-    public void addTransaction(Transaction transaction){
+    /**
+     * Adds a transaction to the block
+     *
+     * @param transaction Transaction to add
+     */
+    public void addTransaction(Transaction transaction) {
         this.transactions.add(transaction);
         this.transactionCount++;
 
@@ -63,17 +89,24 @@ public class Block {
         this.blockSize = SizeUtil.calculateBlockSize(this);
     }
 
-    public void incrementNonce() throws ArithmeticException{
+    /**
+     * Increments the nonce of the block
+     *
+     * @throws ArithmeticException Exception if the increment fails
+     */
+    public void incrementNonce() throws ArithmeticException {
         this.blockHeader.incrementNonce();
     }
 
+    //Getter Setter:
+
     @JsonIgnore
-    public int getNonce(){
+    public int getNonce() {
         return this.blockHeader.getNonce();
     }
 
     @JsonIgnore
-    public void setNonce(int nonce){
+    public void setNonce(int nonce) {
         this.blockHeader.setNonce(nonce);
     }
 

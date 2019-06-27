@@ -19,23 +19,47 @@ import java.util.Objects;
  */
 public class Transaction implements Serializable {
 
+    //Logger to display additional information
     private Logger logger = Logger.getLogger(Transaction.class);
 
-    private byte[] sender; //The sender of the transaction
-    private byte[] receiver; //The receiver of the transaction
-    private double amount; //The amount to send
-    private int nonce; //The nonce of the transaction
-    private double transactionFeeBasePrice; //The basis price of the transaction fee
-    private double transactionFeeLimit; //The max price of the transaction fee
-    private byte[] data; //The optional private data stored in the transaction
+    //The sender of the transaction (senderaddress)
+    private byte[] sender;
+    //The receiver of the transaction (receiveraddress)
+    private byte[] receiver;
+    //The amount to send
+    private double amount;
+    //The nonce of the transaction
+    private int nonce;
+    //The base price of the transaction fee
+    private double transactionFeeBasePrice;
+    //The max price of the transaction fee
+    private double transactionFeeLimit;
+    //The optional data stored in the transaction
+    private byte[] data;
+    //The transaction Id / Hash
+    private transient byte[] txId;
+    //Timestamp of the transaction
+    private transient long timeStamp;
+    //Block Id / Hash of the block
+    private transient byte[] blockId;
+    //Signature of the transaction
+    private transient byte[] signature;
+    //Actual transaction fee
+    private transient double transactionFee;
+    //Size of the transaction
+    private transient int sizeInByte;
 
-    private transient byte[] txId; //The transaction Id / Hash
-    private transient long timeStamp; //Timestamp of the transaction
-    private transient byte[] blockId; //Block Id / Hash of the transaction
-    private transient byte[] signature; //Signature of the transaction
-    private transient double transactionFee; //Actual transaction fee
-    private transient int sizeInByte; //Size of the transaction
-
+    /**
+     * Creates a new transaction
+     *
+     * @param sender                  Sender address as String
+     * @param receiver                Receiver address as String
+     * @param data                    Data to store in the transaction as String
+     * @param amount                  Amount of coins to send
+     * @param nonce                   Nonce of the transaction
+     * @param transactionFeeBasePrice Base price of the fee
+     * @param transactionFeeLimit     Max price of the fee
+     */
     public Transaction(String sender, String receiver, String data, double amount, int nonce, double transactionFeeBasePrice, double transactionFeeLimit) {
         this(
                 sender.getBytes(Charset.forName("utf8")),
@@ -47,6 +71,17 @@ public class Transaction implements Serializable {
                 transactionFeeLimit);
     }
 
+    /**
+     * Creates a new transaction
+     *
+     * @param sender                  Sender address as byte Array
+     * @param receiver                Receiver as byte Array
+     * @param data                    Data to store in the Transaction as byte Array
+     * @param amount                  Amount of coins to send
+     * @param nonce                   Nonce of the transaction
+     * @param transactionFeeBasePrice Base price of the fee
+     * @param transactionFeeLimit     Max price of the fee
+     */
     public Transaction(byte[] sender, byte[] receiver, byte[] data, double amount, int nonce, double transactionFeeBasePrice, double transactionFeeLimit) {
         this.sender = sender;
         this.receiver = receiver;
@@ -59,6 +94,16 @@ public class Transaction implements Serializable {
         createTxId();
     }
 
+    /**
+     * Creates a new transaction without data
+     *
+     * @param sender                  Sender address as byte Array
+     * @param receiver                Receiver address as byte Array
+     * @param amount                  Amount of coins to send
+     * @param nonce                   Nonce of the transactin
+     * @param transactionFeeBasePrice BAse price of the fee
+     * @param transactionFeeLimit     Max price of the fee
+     */
     public Transaction(byte[] sender, byte[] receiver, double amount, int nonce, double transactionFeeBasePrice, double transactionFeeLimit) {
         this.sender = sender;
         this.receiver = receiver;
@@ -70,6 +115,9 @@ public class Transaction implements Serializable {
         createTxId();
     }
 
+    /**
+     * Creates a new empty transaction
+     */
     public Transaction() {
         createTxId();
     }
@@ -100,6 +148,11 @@ public class Transaction implements Serializable {
                 '}';
     }
 
+    /**
+     * Returns a JSON representation of the transaction
+     *
+     * @return JSON string
+     */
     public String asJSONString() {
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(340);
@@ -114,6 +167,12 @@ public class Transaction implements Serializable {
                 '}';
     }
 
+    /**
+     * Compares two transactions
+     *
+     * @param o Object to compare
+     * @return Returns if the two objects are equal
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -130,6 +189,11 @@ public class Transaction implements Serializable {
                 Arrays.equals(receiver, that.receiver);
     }
 
+    /**
+     * Hashes the important addresses
+     *
+     * @return Returns the hash
+     */
     @Override
     public int hashCode() {
         int result = Objects.hash(amount, nonce, transactionFeeBasePrice, transactionFeeLimit);
@@ -139,12 +203,12 @@ public class Transaction implements Serializable {
         return result;
     }
 
+    //Getter and Setter:
+
     @JsonIgnore
     public String getTxIdAsString() {
         return SHA3Util.hash256AsHex(this);
     }
-
-    //Getter and Setter
 
     @JsonIgnore
     public byte[] getSignature() {
