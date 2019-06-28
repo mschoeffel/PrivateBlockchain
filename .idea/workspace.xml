@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,63 +20,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/DependencyManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1608">
-              <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/PendingTransactions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2328">
-              <caret line="109" column="7" selection-start-line="109" selection-start-column="7" selection-end-line="109" selection-end-column="7" />
-              <folding>
-                <element signature="e#2270#2271#0" expanded="true" />
-                <element signature="e#2325#2326#0" expanded="true" />
-                <element signature="e#2549#2550#0" expanded="true" />
-                <element signature="e#2614#2615#0" expanded="true" />
-                <element signature="e#3117#3118#0" expanded="true" />
-                <element signature="e#3170#3171#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accounts/Account.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2856">
-              <caret line="131" column="20" selection-start-line="131" selection-start-column="20" selection-end-line="131" selection-end-column="20" />
-              <folding>
-                <element signature="e#3141#3142#0" expanded="true" />
-                <element signature="e#3190#3191#0" expanded="true" />
-                <element signature="e#3786#3787#0" expanded="true" />
-                <element signature="e#3833#3834#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accounts/AccountStorage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2712">
-              <caret line="123" column="59" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="59" />
-              <folding>
-                <element signature="e#4639#4640#0" expanded="true" />
-                <element signature="e#4682#4683#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -132,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="267" column="29" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
+            <state relative-caret-position="183">
+              <caret line="311" selection-start-line="311" selection-end-line="311" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9406#9407#0" expanded="true" />
@@ -181,6 +126,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/TransactionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="120" column="9" lean-forward="true" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/GenesisBlock.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1368">
@@ -218,9 +202,6 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/crypto/elliptic.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/superagent/superagent.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/accounts.html" />
@@ -236,7 +217,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/mainSecond.java" />
@@ -265,6 +245,10 @@
         <option value="$PROJECT_DIR$/src/main/java/accounts/AccountStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SizeUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/logic/Blockchain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/BlockService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" />
       </list>
     </option>
   </component>
@@ -321,7 +305,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PrivateBlockchain" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
@@ -499,7 +492,7 @@
       <workItem from="1561483793675" duration="1401000" />
       <workItem from="1561577238074" duration="934000" />
       <workItem from="1561656437133" duration="4822000" />
-      <workItem from="1561745178606" duration="1790000" />
+      <workItem from="1561745178606" duration="2961000" />
     </task>
     <servers />
   </component>
@@ -518,7 +511,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50013000" />
+    <option name="totallyTimeSpent" value="51184000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,7 +526,7 @@
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49817517" visible="true" weight="0.17182131" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49817517" visible="true" weight="0.17182131" />
       <window_info id="Structure" order="1" sideWeight="0.5018248" side_tool="true" weight="0.25604552" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -541,7 +534,7 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.3293124" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3293124" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.33090025" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -570,16 +563,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/udp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="56" lean-forward="true" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/initialAccounts.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/MANIFEST_MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -637,23 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="46" column="77" selection-start-line="46" selection-start-column="77" selection-end-line="46" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1140,8 +1106,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="267" column="29" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
+        <state relative-caret-position="183">
+          <caret line="311" selection-start-line="311" selection-end-line="311" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9406#9407#0" expanded="true" />
@@ -1181,6 +1147,37 @@
             <element signature="e#11810#11811#0" expanded="true" />
             <element signature="e#11845#11846#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/api/services/TransactionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="120" column="9" lean-forward="true" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
         </state>
       </provider>
     </entry>

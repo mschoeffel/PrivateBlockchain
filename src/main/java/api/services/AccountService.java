@@ -12,12 +12,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+/**
+ * REST service for accounts
+ */
 @Path("accounts")
 public class AccountService {
 
     @Context
     UriInfo uriInfo;
 
+    /**
+     * Returns the accounts to a given address
+     *
+     * @param address Address to get the account to
+     * @return Account to the given address
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{address}")

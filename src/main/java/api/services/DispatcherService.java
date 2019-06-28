@@ -13,9 +13,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.awt.*;
 
+/**
+ * REST dispatcher service
+ */
 @Path("/")
 public class DispatcherService {
 
+    /**
+     * Returns a block, account or transaction to a given hash and identifies by itself if the hash is a block a transaction or an account
+     *
+     * @param hash Given hash
+     * @return Block, account or transaction
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{hash}")

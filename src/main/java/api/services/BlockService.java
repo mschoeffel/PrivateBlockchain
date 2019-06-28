@@ -10,11 +10,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
+/**
+ * REST service for blocks
+ */
 @Path("blocks")
 public class BlockService {
     @Context
     UriInfo uriInfo;
 
+    /**
+     * Returns the block to a given hash
+     *
+     * @param hash Hash to get the block to
+     * @return Block to the given hash
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{hash}")
@@ -31,6 +40,13 @@ public class BlockService {
         return response;
     }
 
+    /**
+     * Returns a list of blocks from the chain with a given start index and size
+     *
+     * @param size   Amount of blocks you want to get
+     * @param offset Offset of the zero index
+     * @return List f blocks from the given offset till the offset + size
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getRecentBlocks(@QueryParam("size") @DefaultValue("10") int size,
@@ -40,6 +56,12 @@ public class BlockService {
         return Response.ok(blocks).build();
     }
 
+    /**
+     * Returns the next/child block to a given blockhash
+     *
+     * @param hash Blockhash to get the child from
+     * @return Child/Next block from the given one
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{hash}/child")
