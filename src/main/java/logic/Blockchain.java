@@ -12,26 +12,45 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * This class represents the blockchain itself
+ */
 public class Blockchain {
 
+    //Logger to display additional information
     private static Logger logger = Logger.getLogger(Blockchain.class);
 
+    //Max size of a single block in byte
     public final static int MAX_BLOCK_SIZE_BYTES = 1048576;
+    //Version number of the blockchain
     public final static int VERSION = 1;
+    //Network Id of the blockchain
     public final static int NETWORK_ID = 1;
+    //Amount of coins given as reward for mining a new valid block that made it to the chain
     public final static double BLOCK_REWARD = 50.0;
+    //Number of verifications needed to take a block as valid
     public final static int REQUIRED_BLOCK_CONFIRMATIONS = 1;
+    //Amount how often the fee base price gets added to a transaction
     public final static int TRANSACTION_FEE_UNITS = 10;
 
+    //Difficulty of the blockchain
     private BigInteger difficulty;
+    //List of alternative chains that are existing
     private List<Chain> altChains;
+    //Best/Most recent, verified block
     private Block bestBlock;
+    //The chain of the blockchain
     private Chain chain;
+    //Cache of blocks
     private Map<String, Block> blockCache;
+    //Cache of transactions
     private Map<String, Transaction> transactionCache;
 
+    /**
+     * Creates a new empty blockchain
+     */
     public Blockchain() {
-
+        logger.info("Blockchain: Blockchain created.");
         this.altChains = new CopyOnWriteArrayList<>();
         this.chain = new Chain(NETWORK_ID);
         this.altChains.add(chain);
@@ -42,7 +61,14 @@ public class Blockchain {
         this.difficulty = new BigInteger("-57896000000000000000000000000000000000000000000000000000000000000000000000000");
     }
 
+    /**
+     * Creates a new blockchain with given difficulty and alternative chains
+     *
+     * @param difficulty Difficulty
+     * @param altChains  Alternative chains
+     */
     public Blockchain(BigInteger difficulty, List<Chain> altChains) {
+        logger.info("Blockchain: Blockchain created.");
         this.difficulty = difficulty;
         this.altChains = altChains;
         this.blockCache = new ConcurrentHashMap<>();
@@ -70,6 +96,11 @@ public class Blockchain {
         this.bestBlock = chain.getLast();
     }
 
+    /**
+     * Verifies and adds a new block to the blockchain if the block is valid
+     *
+     * @param block Block to add
+     */
     public synchronized void addBlock(Block block) {
         logger.info("Blockchain: New block added.");
         if (VerificationUtil.verifyBlock(block)) {
@@ -92,6 +123,12 @@ public class Blockchain {
         }
     }
 
+    /**
+     * Checks if a block can be linked to a alternative chain and if not a new alternative chain is created
+     *
+     * @param previousBlockHash Previous hash of the block
+     * @param block             Block
+     */
     private void checkAltChains(byte[] previousBlockHash, Block block) {
         boolean isNoBlockOfAltChain = true;
         for (Chain altChain : altChains) {
@@ -108,6 +145,12 @@ public class Blockchain {
         }
     }
 
+    /**
+     * Creates a new alternative chain with a given block an previous hash
+     *
+     * @param previousBlockHash Previous hash
+     * @param block             Block
+     */
     private void createNewAltChain(byte[] previousBlockHash, Block block) {
         Chain chain = getChainForBlock(getBlockByHash(previousBlockHash));
 
@@ -125,6 +168,11 @@ public class Blockchain {
         }
     }
 
+    /**
+     * Switches the main chain if the given chain is longer and valid
+     *
+     * @param chain Chain to check
+     */
     private void switchChainsIfNecessary(Chain chain) {
         if (chain.size() > this.chain.size()) {
             logger.info("Blockchain: Chain switched.");
@@ -134,6 +182,12 @@ public class Blockchain {
         }
     }
 
+    /**
+     * Corrects the open pending transaction when switching the main chain
+     *
+     * @param previousChain Previous chain
+     * @param chain         Chain to switch to
+     */
     private void correctPendingTransactions(Chain previousChain, Chain chain) {
         int index = getIndexOfFork(previousChain, chain);
 
@@ -155,6 +209,13 @@ public class Blockchain {
         DependencyManager.getPendingTransactions().addPendingTransactions(transactionsToInsert);
     }
 
+    /**
+     * Returns the index of the block of the fork (Chain switch)
+     *
+     * @param previousChain Previous chain
+     * @param chain         Chain switched to
+     * @return Index of the last same block
+     */
     private int getIndexOfFork(Chain previousChain, Chain chain) {
         int index = -1;
         for (int i = previousChain.size() - 1; i >= 0; i--) {
@@ -166,10 +227,22 @@ public class Blockchain {
         return (index > -1) ? (index + 1) : 0;
     }
 
+    /**
+     * Checks if the previous block is the best (most recent verified) block
+     *
+     * @param blockHash Blockhash to check from
+     * @return Boolean if the previous block to the given hash is the best block
+     */
     private boolean previousBlockIsBestBlock(byte[] blockHash) {
         return Arrays.equals(DependencyManager.getBlockchain().getPreviousHash(), blockHash);
     }
 
+    /**
+     * Returns the chain to a given block
+     *
+     * @param block Block to get the chain from
+     * @return Chain to the given block
+     */
     private Chain getChainForBlock(Block block) {
         Chain result = null;
 
@@ -187,10 +260,57 @@ public class Blockchain {
         return result;
     }
 
+    /**
+     * Checks if a digit fulfills the set difficulty
+     *
+     * @param digest Digest to check
+     * @return Boolean if the given digest fulfills the set difficulty
+     */
     public boolean fulfillsDifficulty(byte[] digest) {
         BigInteger temp = new BigInteger(digest);
         return temp.compareTo(difficulty) <= 0;
     }
+
+    /**
+     * Gets the latest block given to a specific offset and size
+     *
+     * @param size   Amount of blocks you want to get as List
+     * @param offset Offset from the start of the chain
+     * @return List of blocks
+     */
+    public List<Block> getLatestBlocks(int size, int offset) {
+        List<Block> blocks = new ArrayList<>();
+        Block block = this.getLatestBlock();
+
+        for (int i = 0; i < (size + offset); i++) {
+            if (block != null) {
+                if (i >= offset) {
+                    blocks.add(block);
+                }
+                String previousHash = SHA3Util.digestToHex(block.getBlockHeader().getPreviousHash());
+                block = this.getBlockByHash(previousHash);
+            }
+        }
+        return blocks;
+    }
+
+    /**
+     * Returns the next block in the chain to a given block
+     *
+     * @param block Block to get the next/children from
+     * @return Child/next block to the given one
+     */
+    public Block getChildOfBlock(Block block) {
+        Block result = null;
+        Chain chain = getChainForBlock(block);
+
+        if (chain != null) {
+            result = chain.get(chain.getChain().indexOf(block) + 1);
+        }
+        return result;
+    }
+
+    //Getter Setter:
 
     public Block getGenesisBlock() {
         return chain.get(0);
@@ -210,32 +330,6 @@ public class Blockchain {
 
     public Block getLatestBlock() {
         return bestBlock;
-    }
-
-    public List<Block> getLatestBlocks(int size, int offset) {
-        List<Block> blocks = new ArrayList<>();
-        Block block = this.getLatestBlock();
-
-        for (int i = 0; i < (size + offset); i++) {
-            if (block != null) {
-                if (i >= offset) {
-                    blocks.add(block);
-                }
-                String previousHash = SHA3Util.digestToHex(block.getBlockHeader().getPreviousHash());
-                block = this.getBlockByHash(previousHash);
-            }
-        }
-        return blocks;
-    }
-
-    public Block getChildOfBlock(Block block) {
-        Block result = null;
-        Chain chain = getChainForBlock(block);
-
-        if (chain != null) {
-            result = chain.get(chain.getChain().indexOf(block) + 1);
-        }
-        return result;
     }
 
     public Transaction getTransactionByHash(String hash) {
