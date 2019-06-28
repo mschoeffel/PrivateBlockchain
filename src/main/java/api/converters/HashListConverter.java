@@ -9,8 +9,19 @@ import utils.SHA3Util;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Converter to serialize and deserialize a list of objects
+ */
 public class HashListConverter implements Converter<List<byte[]>> {
 
+    /**
+     * Serializes a list of objects
+     *
+     * @param bytes        List of objects to serialize
+     * @param objectWriter Writer to rite the serialized objects to
+     * @param context      Context
+     * @throws Exception Exception if something went's wrong with the serialization
+     */
     @Override
     public void serialize(List<byte[]> bytes, ObjectWriter objectWriter, Context context) throws Exception {
         objectWriter.beginArray();
@@ -20,6 +31,14 @@ public class HashListConverter implements Converter<List<byte[]>> {
         objectWriter.endArray();
     }
 
+    /**
+     * Deserializes a list of objects
+     *
+     * @param objectReader Reader to read the objects from
+     * @param context      Context
+     * @return List of deserialized objects
+     * @throws Exception Exception if something went's wrong with the deserialization
+     */
     @Override
     public List<byte[]> deserialize(ObjectReader objectReader, Context context) throws Exception {
         List<byte[]> hashes = new ArrayList<>();
