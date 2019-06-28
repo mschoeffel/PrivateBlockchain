@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,88 +19,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SizeUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4272">
-              <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7944#7945#0" expanded="true" />
-                <element signature="e#7973#7974#0" expanded="true" />
-                <element signature="e#8889#8890#0" expanded="true" />
-                <element signature="e#8931#8932#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="311" selection-start-line="311" selection-end-line="311" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#9406#9407#0" expanded="true" />
-                <element signature="e#9441#9442#0" expanded="true" />
-                <element signature="e#9480#9481#0" expanded="true" />
-                <element signature="e#9527#9528#0" expanded="true" />
-                <element signature="e#9575#9576#0" expanded="true" />
-                <element signature="e#9640#9641#0" expanded="true" />
-                <element signature="e#9688#9689#0" expanded="true" />
-                <element signature="e#9731#9732#0" expanded="true" />
-                <element signature="e#9768#9769#0" expanded="true" />
-                <element signature="e#9800#9801#0" expanded="true" />
-                <element signature="e#10672#10673#0" expanded="true" />
-                <element signature="e#10721#10722#0" expanded="true" />
-                <element signature="e#10762#10763#0" expanded="true" />
-                <element signature="e#10795#10796#0" expanded="true" />
-                <element signature="e#10851#10852#0" expanded="true" />
-                <element signature="e#10895#10896#0" expanded="true" />
-                <element signature="e#10936#10937#0" expanded="true" />
-                <element signature="e#10968#10969#0" expanded="true" />
-                <element signature="e#11023#11024#0" expanded="true" />
-                <element signature="e#11065#11066#0" expanded="true" />
-                <element signature="e#11100#11101#0" expanded="true" />
-                <element signature="e#11132#11133#0" expanded="true" />
-                <element signature="e#11181#11182#0" expanded="true" />
-                <element signature="e#11223#11224#0" expanded="true" />
-                <element signature="e#11254#11255#0" expanded="true" />
-                <element signature="e#11282#11283#0" expanded="true" />
-                <element signature="e#11323#11324#0" expanded="true" />
-                <element signature="e#11357#11358#0" expanded="true" />
-                <element signature="e#11406#11407#0" expanded="true" />
-                <element signature="e#11439#11440#0" expanded="true" />
-                <element signature="e#11503#11504#0" expanded="true" />
-                <element signature="e#11547#11548#0" expanded="true" />
-                <element signature="e#11608#11609#0" expanded="true" />
-                <element signature="e#11647#11648#0" expanded="true" />
-                <element signature="e#11810#11811#0" expanded="true" />
-                <element signature="e#11845#11846#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/AccountService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/services/BlockService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
@@ -108,15 +26,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/services/DispatcherService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -130,7 +39,37 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SizeUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-911">
+              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/SHA3Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
@@ -140,22 +79,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/network/adapters/BlockAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
+            <state relative-caret-position="470">
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/GenesisBlock.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1368">
-              <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="312">
+              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -182,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/crypto/elliptic.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/superagent/superagent.js" />
@@ -200,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/mainSecond.java" />
         <option value="$PROJECT_DIR$/src/main/java/main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Application.java" />
@@ -233,6 +185,8 @@
         <option value="$PROJECT_DIR$/src/main/java/api/services/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/converters/HashListConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java" />
       </list>
     </option>
   </component>
@@ -289,7 +243,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
@@ -297,8 +251,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="converters" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
+              <item name="adapters" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PrivateBlockchain" type="b2602c69:ProjectViewProjectNode" />
@@ -476,7 +430,7 @@
       <workItem from="1561483793675" duration="1401000" />
       <workItem from="1561577238074" duration="934000" />
       <workItem from="1561656437133" duration="4822000" />
-      <workItem from="1561745178606" duration="3405000" />
+      <workItem from="1561745178606" duration="4192000" />
     </task>
     <servers />
   </component>
@@ -495,7 +449,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51628000" />
+    <option name="totallyTimeSpent" value="52415000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -593,23 +547,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/accounts/847dbbe5-84b8-4734-8e97-b751a464f86c.json" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SHA3Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1656">
@@ -661,20 +598,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="112" selection-start-line="18" selection-start-column="112" selection-end-line="18" selection-end-column="112" />
         </state>
       </provider>
     </entry>
@@ -880,45 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/network/adapters/BlockAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-          <folding>
-            <element signature="e#434#435#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#761#762#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#873#874#0" expanded="true" />
-            <element signature="e#908#909#0" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
-            <element signature="e#1009#1010#0" expanded="true" />
-            <element signature="e#1063#1064#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1144#1145#0" expanded="true" />
-            <element signature="e#1191#1192#0" expanded="true" />
-            <element signature="e#1241#1242#0" expanded="true" />
-            <element signature="e#1281#1282#0" expanded="true" />
-            <element signature="e#1336#1337#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1461#1462#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1546#1547#0" expanded="true" />
-            <element signature="e#1597#1598#0" expanded="true" />
-            <element signature="e#1651#1652#0" expanded="true" />
-            <element signature="e#1726#1727#0" expanded="true" />
-            <element signature="e#1773#1774#0" expanded="true" />
-            <element signature="e#1861#1862#0" expanded="true" />
-            <element signature="e#1909#1910#0" expanded="true" />
-            <element signature="e#2604#2605#0" expanded="true" />
-            <element signature="e#2678#2679#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1067,13 +951,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SizeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/logic/Blockchain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -1162,6 +1039,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/network/adapters/BlockAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SizeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-911">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SHA3Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
