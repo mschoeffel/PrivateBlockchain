@@ -13,16 +13,35 @@ import java.io.Serializable;
  */
 public final class SHA3Util {
 
-    private SHA3Util(){}
+    private SHA3Util() {
+    }
 
-    public static String digestToHex(byte[] digest){
+    /**
+     * Forms a given digest to a hex String
+     *
+     * @param digest Given digest
+     * @return Hex String
+     */
+    public static String digestToHex(byte[] digest) {
         return Hex.toHexString(digest);
     }
 
-    public static String hash256AsHex(Serializable o){
+    /**
+     * HAshes a given object and returns it as hex String
+     *
+     * @param o Object to hash
+     * @return Hash of object as hex String
+     */
+    public static String hash256AsHex(Serializable o) {
         return Hex.toHexString(hash256(o));
     }
 
+    /**
+     * Hashes a given object and returns the hash
+     *
+     * @param o Object to hash
+     * @return Hash of the object
+     */
     public static byte[] hash256(Serializable o) {
         byte[] digest = new byte[0];
 
@@ -33,21 +52,31 @@ public final class SHA3Util {
             objectOutputStream.flush();
 
             digest = hash256(byteArrayOutputStreamos.toByteArray());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return digest;
     }
 
-    public static byte[] hash256( byte[] bytes )
-    {
-        SHA3.DigestSHA3 digestSHA3 = new SHA3.Digest256( );
+    /**
+     * Hashes a given byte Array
+     *
+     * @param bytes Byte Array to hash
+     * @return Hash of the byte Array
+     */
+    public static byte[] hash256(byte[] bytes) {
+        SHA3.DigestSHA3 digestSHA3 = new SHA3.Digest256();
 
-        return digestSHA3.digest( bytes );
+        return digestSHA3.digest(bytes);
     }
 
-    public static byte[] hexToDigest(String hex){
+    /**
+     * decodes a hex String to a byte Array
+     *
+     * @param hex Hex String
+     * @return Decoded byte Array
+     */
+    public static byte[] hexToDigest(String hex) {
         return Hex.decode(hex);
     }
 }
