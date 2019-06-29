@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd4227e8-4da6-4928-8a8a-a44c8efea3ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="600">
+              <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,7 +59,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utils/SHA3Util.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
@@ -156,7 +155,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/utils/merkle/MerkleTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/mainSecond.java" />
         <option value="$PROJECT_DIR$/src/main/java/main.java" />
         <option value="$PROJECT_DIR$/src/main/java/Application.java" />
@@ -192,6 +190,7 @@
         <option value="$PROJECT_DIR$/src/main/java/utils/VerificationUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/TransactionComparatorByFee.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/SHA3Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java" />
       </list>
     </option>
   </component>
@@ -436,7 +435,7 @@
       <workItem from="1561577238074" duration="934000" />
       <workItem from="1561656437133" duration="4822000" />
       <workItem from="1561745178606" duration="4218000" />
-      <workItem from="1561806821468" duration="272000" />
+      <workItem from="1561806821468" duration="584000" />
     </task>
     <servers />
   </component>
@@ -455,7 +454,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52713000" />
+    <option name="totallyTimeSpent" value="53025000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1041,16 +1040,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/api/converters/HashConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1094,6 +1083,16 @@
             <element signature="e#588#589#0" expanded="true" />
             <element signature="e#851#852#0" expanded="true" />
             <element signature="e#2052#2053#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/SignatureUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
