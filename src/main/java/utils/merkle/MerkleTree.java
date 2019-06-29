@@ -1,6 +1,5 @@
 package utils.merkle;
 
-import api.converters.HashConverter;
 import api.converters.HashListConverter;
 import com.owlike.genson.annotation.JsonConverter;
 import models.Transaction;
@@ -18,9 +17,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class MerkleTree {
 
-    private static Logger logger = Logger.getLogger(MerkleTree.class); //Logger to log some status messages
-    private MerkleTreeElement root; //The root element of the merkle tree
+    //Logger to display additional information
+    private static Logger logger = Logger.getLogger(MerkleTree.class);
+    //The root element of the merkle tree
+    private MerkleTreeElement root;
 
+    /**
+     * Creates a new merkle tree with a list of transactions
+     *
+     * @param transactions List of transactions to store in the merkle tree
+     */
     public MerkleTree(List<Transaction> transactions) {
         initMerkleTree(transactions);
     }
@@ -77,6 +83,12 @@ public class MerkleTree {
         return nextLayer;
     }
 
+    /**
+     * Returns a list of the hashes of the child elements to the given hash element
+     *
+     * @param hash Given hash element
+     * @return List with the hashes of the child elements
+     */
     @JsonConverter(HashListConverter.class)
     public List<byte[]> getHashesForTransactionHash(byte[] hash) {
         List<byte[]> hashList = new CopyOnWriteArrayList<>();
@@ -88,6 +100,14 @@ public class MerkleTree {
         return hashList;
     }
 
+    /**
+     * Checks a child element
+     *
+     * @param child    Child element to check
+     * @param hash     Hash of the child element
+     * @param hashList List of child hashes
+     * @return Boolean if the child is valid or not
+     */
     private boolean checkChild(MerkleTreeElement child, byte[] hash, List<byte[]> hashList) {
         boolean result = java.util.Arrays.equals(child.getHash(), hash);
 
